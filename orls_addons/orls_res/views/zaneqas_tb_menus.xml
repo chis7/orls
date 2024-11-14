@@ -2,8 +2,8 @@
 <odoo>
     <!-- Top menu item -->
     <menuitem name="orls"
-              id="orls_root"
-              web_icon="orls,static/description/icon.png"/>
+              id="orls_root"/>
+<!--              web_icon="orls,static/description/icon.png"/>-->
 
     <menuitem id="zaneqas_tb_eqa_root"
               name="EQA Schemes"
@@ -21,13 +21,13 @@
 
     <menuitem id="zaneqas_tb_eqa_configs"
               name="Configuration"
-              parent="zaneqas_tb_root"
+              parent="orls_root"
               action="action_zaneqas_tb_xpert_eqa_expected_results"/>
 
     <menuitem id="zaneqas_tb_eqa_configs_rounds"
-              name="EQA Rounds"
+              name="Medical Disciplines"
               parent="zaneqas_tb_eqa_configs"
-              action="action_zaneqas_tb_xpert_eqa_config_rounds"/>
+              action="action_orls_medical_disciplines"/>
 
     <menuitem id="zaneqas_tb_eqa_configs_xpert"
               name="Xpert"
@@ -35,7 +35,7 @@
               action="action_zaneqas_tb_xpert_eqa_expected_results"/>
 
     <menuitem id="zaneqas_tb_eqa_configs_xpert_expected_results"
-              name="Xpert EQA Expected Results"
+              name="Rotations"
               parent="zaneqas_tb_eqa_configs_xpert"
               action="action_zaneqas_tb_xpert_eqa_expected_results"/>
 
