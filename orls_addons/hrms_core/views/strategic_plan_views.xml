@@ -82,13 +82,13 @@
         </field>
     </record>
 
-<!--    <record id="action_hrms_strategic_plan" model="ir.actions.act_window">-->
-<!--        <field name="name">Strategic Plans</field>-->
-<!--        <field name="res_model">hrms.strategic.plan</field>-->
-<!--        <field name="view_mode">tree,form</field>-->
-<!--    </record>-->
+    <record id="action_hrms_strategic_plan" model="ir.actions.act_window">
+        <field name="name">Strategic Plans</field>
+        <field name="res_model">hrms.strategic.plan</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-<!--    &lt;!&ndash; Menu Items &ndash;&gt;-->
+    <!-- Menu Items -->
 <!--    <menuitem id="menu_hrms_strategic_plan_root"-->
 <!--              name="Strategic Plan"-->
 <!--              sequence="10"/>-->

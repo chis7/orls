@@ -798,7 +798,7 @@
     </record>
     <record id="job_1264" model="hrms.job">
       <field name="job_classification_id" ref="job_classification_1"/>
-      <field name="name">Chief Human Resource Management and Development Officer</field>
+      <field name="name">Chief Human Resource Management Officer and Development</field>
       <field name="salary_grade_id" ref="salary_grade_11"/>
     </record>
     <record id="job_1265" model="hrms.job">
@@ -997,7 +997,7 @@
     </record>
     <record id="job_1326" model="hrms.job">
       <field name="job_classification_id" ref="job_classification_1"/>
-      <field name="name">Chief Human Resource Development Officer - Planning</field>
+      <field name="name">Chief Human Resource Development Officer-Planning</field>
       <field name="salary_grade_id" ref="salary_grade_11"/>
     </record>
     <record id="job_1327" model="hrms.job">
@@ -5108,6 +5108,11 @@
       <field name="job_classification_id" ref="job_classification_2"/>
       <field name="name">Purchasing and Supplies Assistant</field>
       <field name="salary_grade_id" ref="salary_grade_7"/>
+    </record>
+    <record id="job_668" model="hrms.job">
+      <field name="job_classification_id" ref="job_classification_2"/>
+      <field name="name">Chief Human Resource Management and Development Officer</field>
+      <field name="salary_grade_id" ref="salary_grade_11"/>
     </record>
     <record id="job_669" model="hrms.job">
       <field name="job_classification_id" ref="job_classification_1"/>

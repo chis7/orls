@@ -16,7 +16,7 @@ class ISCO08(models.Model):
         'mail.activity.mixin',
     ]
     _description = "International Standard Classification of Occupations (ISCO) 08 Code"
-    _rec_name = 'description'
+    _rec_name = 'unit'
 
     ISCO_version = fields.Char(string='ISCO Version')
     major = fields.Char(string='Major', required=True)

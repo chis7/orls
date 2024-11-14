@@ -18,13 +18,13 @@ class StrategicPlan(models.Model):
         comodel_name='hrms.strategic.plan.objective',
         inverse_name='plan_id',
         string='Objectives')
-    company_id = fields.Many2one(comodel_name='res.company', string='Institution')
+    company_id = fields.Many2one(comodel_name='res.company', string='Company')
 
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
             if vals.get('sequence', 'New') == 'New':
-                vals['sequence'] = self.env['ir.sequence'].next_by_code('hrms.strategic.plan') or 'New'
+                vals['sequence'] = self.env['ir.sequence'].next_by_code('hrms.strategic.plan') or ('New')
             result = super(StrategicPlan, self).create(vals_list)
             return result
 
@@ -35,8 +35,8 @@ class StrategicPlanObjective(models.Model):
 
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
-    plan_id = fields.Many2one(comodel_name='hrms.strategic.plan', string='Strategic Plan', ondelete='cascade')
-    initiatives = fields.One2many(comodel_name='hrms.strategic.plan.initiative', inverse_name='objective_id', string='Initiatives')
+    plan_id = fields.Many2one('hrms.strategic.plan', string='Strategic Plan', ondelete='cascade')
+    initiatives = fields.One2many('hrms.strategic.plan.initiative', 'objective_id', string='Initiatives')
 
 
 class StrategicPlanInitiative(models.Model):
@@ -45,16 +45,13 @@ class StrategicPlanInitiative(models.Model):
 
     name = fields.Char(string='Name', required=True)
     description = fields.Text(string='Description')
-    objective_id = fields.Many2one(comodel_name='hrms.strategic.plan.objective', string='Objective', ondelete='cascade')
-    responsible_id = fields.Many2one(comodel_name='hr.employee', string='Responsible')
+    objective_id = fields.Many2one('hrms.strategic.plan.objective', string='Objective', ondelete='cascade')
+    responsible_id = fields.Many2one('hr.employee', string='Responsible')
     start_date = fields.Date(string='Start Date')
     end_date = fields.Date(string='End Date')
     budget = fields.Float(string='Budget')
-    state = fields.Selection(
-        selection=[
-            ('draft', 'Draft'),
-            ('in_progress', 'In Progress'),
-            ('done', 'Done')
-        ],
-        string='Status', default='draft'
-    )
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('in_progress', 'In Progress'),
+        ('done', 'Done')
+    ], string='Status', default='draft')

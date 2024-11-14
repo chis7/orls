@@ -22,28 +22,20 @@
 from odoo import models, fields, api
 
 
-class Qualification(models.Model):
-    _name = "hrms.qualification"
-    _description = "Qualification"
+class ScheduledTrainingCourse(models.Model):
+    _name = "hrms.scheduled.training.course"
+    _description = "Scheduled Training Course"
 
-    sequence = fields.Char(
-        string='Reference',
-        required=True, copy=False, readonly=True, index=True,
-        default=lambda self: 'New')
-    name = fields.Char(string="Name")
-    qualification_level_id = fields.Many2one(comodel_name='hrms.qualification.level', string="Qualification Level")
-
-    _sql_constraints = [
-        ('unique_name', 'UNIQUE(name)', 'The name must be unique.'),
-    ]
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('sequence', 'New') == 'New':
-                vals['sequence'] = self.env['ir.sequence'].next_by_code('hrms.qualification.seq') or 'New'
-            result = super(Qualification, self).create(vals_list)
-            return result
-
+    name = fields.Char(string='Name')
+    training_course_id = fields.Many2one(comodel_name='hrms.training.course', string='Training Course')
+    start_date = fields.Datetime(string='Start Date')
+    end_date = fields.Datetime(string='End Date')
+    participant_ids = fields.One2many(comodel_name='hr.employee', string='Participants')
+    instructor_ids = fields.One2many(comodel_name='res.partner', string='Instructors')
+    notes = fields.Text(string='Notes')
+    street = fields.Char(string='Street')
+    street2 = fields.Char(string='Street2')
+    district = fields.Char(string='District')
+    province = fields.Char(string='Province')
 
 

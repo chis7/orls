@@ -63,7 +63,7 @@
         </record>
 
         <record id="hrms_employee_11" model="hr.employee">
-            <field name="name">Chansa Kaluba</field>
+            <field name="name">Ahmed Kaluba</field>
             <field name="job_title">Financial Analyst</field>
             <field name="department_id" ref="hr.dep_finance"/>
         </record>
@@ -87,19 +87,19 @@
         </record>
 
         <record id="hrms_employee_15" model="hr.employee">
-            <field name="name">Chisha Mubanga</field>
+            <field name="name">Nyambe Nyambe</field>
             <field name="job_title">Content Writer</field>
             <field name="department_id" ref="hr.dep_marketing"/>
         </record>
 
         <record id="hrms_employee_16" model="hr.employee">
-            <field name="name">Mwanza Tembo</field>
+            <field name="name">Sitali Mudenda</field>
             <field name="job_title">Quality Assurance</field>
             <field name="department_id" ref="hr.dep_it"/>
         </record>
 
         <record id="employee_17" model="hr.employee">
-            <field name="name">Chibesa Nkandu</field>
+            <field name="name">Sophia Nkandu</field>
             <field name="job_title">Business Analyst</field>
             <field name="department_id" ref="hr.dep_projects"/>
         </record>

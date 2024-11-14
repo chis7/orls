@@ -27,39 +27,6 @@
             <field name="implied_ids" eval="[(4, ref('group_hrms_user')), (4, ref('group_hrms_hr_staff')), (4, ref('group_hrms_manager'))]"/>
             <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
         </record>
-
-        <!-- HR Development Committee Group -->
-        <record id="group_hrms_training_hrdc" model="res.groups">
-            <field name="name">HRMS: Training HR Development Committee (HRDC)</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" eval="[(4, ref('group_hrms_hr_staff'))]"/>
-        </record>
-
-        <!-- Disciplinary Hearing Committee Group -->
-        <record id="group_hrms_disciplinary_hearing" model="res.groups">
-            <field name="name">HRMS: Disciplinary Hearing Committee</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" eval="[(4, ref('group_hrms_user'))]"/>
-        </record>
-
-        <record id="group_hrms_disciplinary_committee" model="res.groups">
-            <field name="name">HRMS: Provincial/Ministerial Disciplinary Committee</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" eval="[(4, ref('group_hrms_user'))]"/>
-        </record>
-
-        <record id="group_hrms_disciplinary_psmd" model="res.groups">
-            <field name="name">HRMS: PSMD Disciplinary Committee</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" eval="[(4, ref('group_hrms_user'))]"/>
-        </record>
-
-        <record id="group_hrms_disciplinary_hearing" model="res.groups">
-            <field name="name">HRMS: CSC Disciplinary Committee</field>
-            <field name="category_id" ref="base.module_category_hidden"/>
-            <field name="implied_ids" eval="[(4, ref('group_hrms_user'))]"/>
-        </record>
-
         <record id="group_hrms_head_institution" model="res.groups">
             <field name="name">HRMS: Head of Institution</field>
             <field name="category_id" ref="base.module_category_hidden"/>

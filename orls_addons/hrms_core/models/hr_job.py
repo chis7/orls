@@ -13,12 +13,12 @@ class Job(models.Model):
     _inherit = 'hr.job'
     _description = "Position"
 
-    name = fields.Char(related='hrms_job_id.name', string='Title', store=True, readonly=True)
+    name = fields.Char(related='hrms_job_id.name', string='Title', required=True, store=True, readonly=True)
     hrms_job_id = fields.Many2one(
         comodel_name='hrms.job',
         string='Job'
     )
-    post_id = fields.Char(string='Position ID', help='PEMIC Position ID')
+    position_id = fields.Char(string='Position ID', help='PEMIC Position ID')
     currency_id = fields.Many2one(
         comodel_name='res.currency', string='Currency', compute='_compute_currency_id')
     company_id = fields.Many2one(
@@ -33,7 +33,6 @@ class Job(models.Model):
         selection=[
             ('open', 'Open'),
             ('closed', 'Closed'),
-            ('discontinued', 'Discontinued'),
         ],
         string='State',
         default='open',

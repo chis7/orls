@@ -255,7 +255,7 @@
       <field name="color" eval="5"/>
     </record>
     <record id="department_16" model="hr.department">
-      <field name="name">Finance</field>
+      <field name="name">Accounts</field>
       <field name="color" eval="11"/>
     </record>
     <record id="department_160" model="hr.department">

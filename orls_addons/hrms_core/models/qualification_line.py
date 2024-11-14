@@ -38,3 +38,6 @@ class QualificationLine(models.Model):
         string="Training Institution")
     start_date = fields.Datetime(string="Start Date")
     end_date = fields.Datetime(string="End Date")
+
+
+
