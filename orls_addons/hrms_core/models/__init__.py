@@ -12,10 +12,9 @@ from . import departmental_work_plan
 from . import hr_department
 from . import hr_employee
 from . import qualification_level
-from . import qualification
-from . import employee_qualification
 from . import competence
-from . import competency
+from . import qualification
+from . import qualification_line
 from . import organisation_unit_level
 from . import organisation_unit_group
 from . import organisation_unit_group_set
@@ -29,6 +28,3 @@ from . import job_classification
 from . import hrms_job
 from . import hr_job
 from . import job_description
-from . import employee_position
-from . import license
-from . import employee_license

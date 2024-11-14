@@ -19,31 +19,28 @@
 #
 ###############################################################################
 
-from odoo import models, fields, api
+from odoo import models, fields
 
 
-class Qualification(models.Model):
-    _name = "hrms.qualification"
-    _description = "Qualification"
+class CompetencyLine(models.Model):
+    _name = "hrms.competency.line"
+    _description = "Competency Line"
 
-    sequence = fields.Char(
-        string='Reference',
-        required=True, copy=False, readonly=True, index=True,
-        default=lambda self: 'New')
-    name = fields.Char(string="Name")
-    qualification_level_id = fields.Many2one(comodel_name='hrms.qualification.level', string="Qualification Level")
-
-    _sql_constraints = [
-        ('unique_name', 'UNIQUE(name)', 'The name must be unique.'),
-    ]
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('sequence', 'New') == 'New':
-                vals['sequence'] = self.env['ir.sequence'].next_by_code('hrms.qualification.seq') or 'New'
-            result = super(Qualification, self).create(vals_list)
-            return result
+    employee_id = fields.Many2one(
+        comodel_name='hr.employee',
+        string="Employee",
+        required=True, ondelete='cascade', index=True, copy=False)
+    competency_id = fields.Many2one(
+        comodel_name='hrms.competency',
+        string="Competency")
+    competency_evaluation = fields.Selection(
+        selection=[
+            ('competent', 'Competent'),
+            ('not_competent', 'Not Competent'),
+            ('not_evaluated', 'Not Evaluated'),
+        ],
+        string="Competency Evaluation"
+    )
 
 
 

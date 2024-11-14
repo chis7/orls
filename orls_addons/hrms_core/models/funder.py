@@ -13,8 +13,10 @@ class SalarySource(models.Model):
     _name = "hrms.funder"
     _description = "Funder"
 
-    name = fields.Char(string='Name', required=True)
-    short_name = fields.Char('Short Name')
+    name = fields.Char('Name', required=True)
+    short_name = fields.Char('Short Name', required=True)
+    user_id = fields.Many2one(comodel_name='res.users', string='User', default=lambda self: self.env.user)
+    active = fields.Boolean(default=True)
 
     _sql_constraints = [
         ('unique_name',

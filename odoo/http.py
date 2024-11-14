@@ -137,7 +137,6 @@ from urllib.parse import urlparse
 from zlib import adler32
 
 import babel.core
-import pkg_resources
 
 try:
     import geoip2.database
@@ -279,8 +278,7 @@ ROUTING_KEYS = {
     'alias', 'host', 'methods',
 }
 
-# if parse_version(werkzeug.__version__) >= parse_version('2.0.2'):
-if pkg_resources.parse_version(pkg_resources.get_distribution("werkzeug").version) >= pkg_resources.parse_version('2.0.2'):
+if parse_version(werkzeug.__version__) >= parse_version('2.0.2'):
     # Werkzeug 2.0.2 adds the websocket option. If a websocket request
     # (ws/wss) is trying to access an HTTP route, a WebsocketMismatch
     # exception is raised. On the other hand, Werkzeug 0.16 does not

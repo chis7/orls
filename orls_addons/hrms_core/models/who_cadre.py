@@ -32,8 +32,8 @@ class WHOCadre(models.Model):
 
     isco_08_id = fields.Many2one(comodel_name='hrms.isco.08', string='ISCO 08 Code')
     who_cadre_category_id = fields.Many2one(comodel_name='hrms.who.cadre.category', string='Who Cadre Category', required=True)
-    occupation_group = fields.Char(string='Occupation Group', required=True)
-    definition = fields.Text(string='Definition', required=True)
+    occupation_group = fields.Char('Occupation Group', required=True)
+    definition = fields.Text('Definition', required=True)
     examples = fields.Text('Examples')
     notes = fields.Text('Notes')
     hrms_job_ids = fields.One2many(

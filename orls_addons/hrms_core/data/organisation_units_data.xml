@@ -586,5 +586,28 @@
             <field name="parent_id" ref="organisation_unit_muchinga"/>
             <field name="partner_id" ref="chama_district_health_office_partner"/>
         </record>
+
+        <!-- Health Facilities as branches of each District Health Office -->
+        <!-- Lusaka District Health Facilities -->
+        <record id="organisation_unit_lusaka_district_matero_level_one_hospital" model="res.company">
+            <field name="name">Matero Level One Hospital</field>
+            <field name="parent_id" ref="organisation_unit_lusaka_district"/>
+            <field name="partner_id" ref="organisation_unit_lusaka_district_matero_level_one_hospital_partner"/>
+        </record>
+        <record id="organisation_unit_lusaka_district_chaisa_health_centre" model="res.company">
+            <field name="name">Chaisa Health Centre</field>
+            <field name="parent_id" ref="organisation_unit_lusaka_district"/>
+            <field name="partner_id" ref="organisation_unit_lusaka_district_chaisa_health_centre_partner"/>
+        </record>
+        <record id="organisation_unit_lusaka_district_chipata_1st_level_hospital" model="res.company">
+            <field name="name">Chipata 1st Level Hospital</field>
+            <field name="parent_id" ref="organisation_unit_lusaka_district"/>
+            <field name="partner_id" ref="organisation_unit_lusaka_district_chipata_1st_level_hospital_partner"/>
+        </record>
+        <record id="organisation_unit_lusaka_district_matero_reference_clinic_or_matero_main_clinic" model="res.company">
+            <field name="name">Matero Reference Clinic/Matero Main Clinic</field>
+            <field name="parent_id" ref="organisation_unit_lusaka_district"/>
+            <field name="partner_id" ref="organisation_unit_lusaka_district_matero_reference_clinic_or_matero_main_clinic_partner"/>
+        </record>
     </data>
 </odoo>

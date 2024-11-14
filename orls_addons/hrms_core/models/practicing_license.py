@@ -45,3 +45,5 @@ class PracticingLicense(models.Model):
     _sql_constraints = [
         ('unique_license_number',
          'unique(license_number)', 'License number should be unique!')]
+
+
