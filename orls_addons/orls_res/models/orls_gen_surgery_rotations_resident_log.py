@@ -8,68 +8,63 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
-class OrlsGenSurgeryRotationProceduresOperations(models.Model):
-    _name = "orls.gen.surgery.rotation.procedures.operations"
+class OrlsGenSurgeryResidentLog(models.Model):
+    _name = "orls.gen.surgery.resident.log"
     _inherit = ["mail.thread"]
-    _description = "Orls General Surgery Rotation Procedures and Operations"
+    _description = "Orls Surgery Resident Log"
 
-    internship_center_id = fields.Many2one('res.company', string="Internship Center", required=True)
-    hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.", required=True)
-    hpcz_license_No = fields.Char(string="HPCZ License No.", required=True)
-    supervisor_id = fields.Many2one('res.employee', string="Supervisor's Name", )
+    internship_center_id = fields.Integer(string="Internship Center")
+    hpcz_Reg_No = fields.Integer(string="HPCZ Reg. No.")
+    hpcz_license_No = fields.Char(string="HPCZ License No.")
+    supervisor_id = fields.Integer( string="Supervisor's Name", )
     start_date = fields.Date(string="Start Date", required=True)
     end_date = fields.Date(string="End Date", required=True)
-    name = fields.Many2one('orls.medical.disciplines', string="Discipline", required=True)
+    name = fields.Integer(string="Discipline")
 
     supervisor_comment = fields.Text(string="Supervisor Comment", tracking=True)
     pdf_file = fields.Binary(string="PDF File")
     pdf_filename = fields.Char(string="PDF Filename")
 
-    orls_surgical_toilet_ids = fields.One2many(
-        'orls.gen.surgical.toilet.lines',
-        'orls_surgical_toilet_id',
+    orls_surgical_toilet_log_ids = fields.One2many(
+        'orls.gen.surgical.toilet.log.lines',
+        'orls_surgical_toilet_log_id',
         string="Surgical toilet-10(p)"
     )
-    orls_suturing_wound_ids = fields.One2many(
-        'orls.suturing.wound.lines',
-        'orls_suturing_wound_id',
+    orls_suturing_wound_log_ids = fields.One2many(
+        'orls.suturing.wound.log.lines',
+        'orls_suturing_wound_log_id',
         string="Suturing Wound-10(p)"
     )
-    orls_incision_drainage_abscess_ids = fields.One2many(
-        'orls.incision.drainage.abscess.lines',
-        'orls_incision_drainage_abscess_id',
+    orls_incision_drainage_abscess_log_ids = fields.One2many(
+        'orls.incision.drainage.abscess.log.lines',
+        'orls_incision_drainage_abscess_log_id',
         string="Incision and drainage of Abscess 1 (O) 2(p)"
     )
-    orls_insertion_chest_tubes_ids = fields.One2many(
-        'orls.insertion.chest.tubes.lines',
-        'orls_insertion_chest_tubes_id',
+    orls_insertion_chest_tubes_log_ids = fields.One2many(
+        'orls.insertion.chest.tubes.log.lines',
+        'orls_insertion_chest_tubes_log_id',
         string="Insertion of chest tubes 3(p)"
     )
 
-    orls_removal_of_stitches_ids = fields.One2many(
-        'orls.removal.of.stitches.lines',
-        'orls_removal_of_stitches_id',
+    orls_removal_of_stitches_log_ids = fields.One2many(
+        'orls.removal.of.stitches.log.lines',
+        'orls_removal_of_stitches_log_id',
         string="Removal of stitches 10(p)"
     )
 
-    # orls_operation_lines_ids = fields.One2many(
-    #     'orls.gen.surgery.rotation.procedures.operations.lines',
-    #     'orls_operation_id',
-    #     string="Operation Details"
-    # )
-    orls_operation_monthly_review_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.monthly.perf.lines',
-        'orls_operation_monthly_review_id',
+    orls_operation_monthly_review_lines_log_ids = fields.One2many(
+        'orls.gen.surgery.monthly.perf.log.lines',
+        'orls_operation_monthly_review_lines_log_id',
         string="Monthly review of the performance"
     )
-    orls_operation_clinical_or_audit_meetings_presented_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.procedures.operations.cl.pres.lines',
-        'orls_operation_clinical_presentation_id',
+    orls_operation_clinical_or_audit_meetings_presented_log_lines_ids = fields.One2many(
+        'orls.gen.surgery.rotation.cl.pres.log.lines',
+        'orls_operation_clinical_presentation_log_id',
         string="Details of Clinical/Audit Meetings Presented"
     )
-    orls_operation_teaching_rounds_attended_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.teaching.rounds.attended.lines',
-        'orls_operation_clinical_teaching_rounds_id',
+    orls_operation_teaching_rounds_attended_lines_log_ids = fields.One2many(
+        'orls.gen.surgery.teaching.rounds.attended.log.lines',
+        'orls_operation_clinical_teaching_rounds_log_id',
         string="Teaching Rounds Attended"
     )
 
@@ -81,7 +76,6 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
         ],
         default='draft',
         string="Status",
-        required=True,
         tracking=True
     )
     user_in_assigned_company_and_open_and_submitted = fields.Boolean(

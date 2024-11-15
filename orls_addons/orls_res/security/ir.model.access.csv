@@ -15,6 +15,18 @@ access_orls_removal_of_stitches_lines,access.orls.removal.of.stitches.lines,mode
 access_orls_gen_surgical_toilet_lines,access.orls.gen.surgical.toilet.lines,model_orls_gen_surgical_toilet_lines,,1,1,1,1
 access_orls_suturing_wound_lines,access.orls.suturing.wound.lines,model_orls_suturing_wound_lines,,1,1,1,1
 
+access_orls_gen_surgical_toilet_log_lines,access.orls.gen.surgical.toilet.log.lines,model_orls_gen_surgical_toilet_log_lines,,1,1,1,1
+access_orls_suturing_wound_log_lines,access.orls.suturing.wound.log.lines,model_orls_suturing_wound_log_lines,,1,1,1,1
+access_orls_incision_drainage_abscess_log_lines,access.orls.incision.drainage.abscess.log.lines,model_orls_incision_drainage_abscess_log_lines,,1,1,1,1
+access_orls_insertion_chest_tubes_log_lines,access.orls.insertion.chest.tubes.log.lines,model_orls_insertion_chest_tubes_log_lines,,1,1,1,1
+access_orls_removal_of_stitches_log_lines,access.orls.removal.of.stitches.log.lines,model_orls_removal_of_stitches_log_lines,,1,1,1,1
+access_orls_gen_surgery_monthly_perf_log_lines,access.orls.gen.surgery.monthly.perf.log.lines,model_orls_gen_surgery_monthly_perf_log_lines,,1,1,1,1
+access_orls_gen_surgery_rotation_cl_pres_log_lines,access.orls.gen.surgery.rotation.cl.pres.log.lines,model_orls_gen_surgery_rotation_cl_pres_log_lines,,1,1,1,1
+access_orls_gen_surgery_teaching_rounds_attended_log_lines,access.orls.gen.surgery.teaching.rounds.attended.log.lines,model_orls_gen_surgery_teaching_rounds_attended_log_lines,,1,1,1,1
+
+
+
+
 access_zaneqas_tb_xpert_eqa_result,access.zaneqas.tb.xpert.eqa.result,model_zaneqas_tb_xpert_eqa_result,,1,1,1,1
 access_zaneqas_tb_xpert_eqa_result_lines,access.zaneqas.tb.xpert.eqa.result.lines,model_zaneqas_tb_xpert_eqa_result_lines,,1,1,1,1
 access_zaneqas_tb_xpert_eqa_result_error_code_lines,access.zaneqas.tb.xpert.eqa.result.error.code.lines,model_zaneqas_tb_xpert_eqa_result_error_code_lines,,1,1,1,1

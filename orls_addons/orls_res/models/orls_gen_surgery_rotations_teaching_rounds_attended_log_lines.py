@@ -1,3 +1,4 @@
+
 # -*- coding: utf-8 -*-
 from datetime import datetime, date
 
@@ -6,12 +7,12 @@ from odoo.exceptions import UserError, ValidationError
 import random
 
 
-class OrlsGenSurgeryRotationProceduresOperationsMonthlyPerformanceReviewLines(models.Model):
-    _name = "orls.gen.surgery.rotation.teaching.rounds.attended.lines"
+class OrlsGenSurgeryRotationTeachingRoundsAttendedLines(models.Model):
+    _name = "orls.gen.surgery.teaching.rounds.attended.log.lines"
     _description = "Orls Gen Surgery Teaching Rounds Attended Lines"
 
-    orls_operation_clinical_teaching_rounds_id = fields.Many2one(
-        'orls.gen.surgery.rotation.procedures.operations',
+    orls_operation_clinical_teaching_rounds_log_id = fields.Many2one(
+        'orls.gen.surgery.resident.log',
         string="Teaching Rounds Attended"
     )
     date = fields.Date(string="Date", store=True)

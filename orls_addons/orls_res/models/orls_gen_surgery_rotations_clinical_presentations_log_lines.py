@@ -6,12 +6,12 @@ from odoo.exceptions import UserError, ValidationError
 import random
 
 
-class OrlsGenSurgeryRotationProceduresOperationsMonthlyPerformanceReviewLines(models.Model):
-    _name = "orls.gen.surgery.rotation.procedures.operations.cl.pres.lines"
-    _description = "Orls Gen Surgery Clinical Presentations Lines"
+class OrlsGenSurgeryRotationClinicalPresentationsLogLines(models.Model):
+    _name = "orls.gen.surgery.rotation.cl.pres.log.lines"
+    _description = "Orls General Surgery Rotation Clinical Presentations Log Lines"
 
-    orls_operation_clinical_presentation_id = fields.Many2one(
-        'orls.gen.surgery.rotation.procedures.operations',
+    orls_operation_clinical_presentation_log_id = fields.Many2one(
+        'orls.gen.surgery.resident.log',
         string="Clinical Presentations Made"
     )
     date = fields.Date(string="Date", store=True)
