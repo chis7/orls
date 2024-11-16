@@ -10,7 +10,7 @@ class OrlsInsertionChestTubeLogLines(models.Model):
     _name = "orls.insertion.chest.tubes.log.lines"
     _description = "Orls Insertion Chest Tubes Log Lines"
 
-    orls_insertion_chest_tubes_log_id = fields.Many2one(
+    orls_insertion_chest_tubes_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Insertion of chest tubes 3(p)"
     )

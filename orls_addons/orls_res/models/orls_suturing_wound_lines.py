@@ -10,7 +10,7 @@ class OrlsSuturingWoundLines(models.Model):
     _name = "orls.suturing.wound.lines"
     _description = "Orls Suturing Wound Lines"
 
-    orls_suturing_wound_id = fields.Many2one(
+    orls_suturing_wound_main_id = fields.Many2one(
         'orls.gen.surgery.rotation.procedures.operations',
         string="Suturing Wound"
     )

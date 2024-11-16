@@ -11,7 +11,7 @@ class OrlsGenSurgeryRotationTeachingRoundsAttendedLines(models.Model):
     _name = "orls.gen.surgery.teaching.rounds.attended.log.lines"
     _description = "Orls Gen Surgery Teaching Rounds Attended Lines"
 
-    orls_operation_clinical_teaching_rounds_log_id = fields.Many2one(
+    orls_operation_clinical_teaching_rounds_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Teaching Rounds Attended"
     )

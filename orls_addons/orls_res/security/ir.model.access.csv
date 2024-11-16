@@ -23,6 +23,7 @@ access_orls_removal_of_stitches_log_lines,access.orls.removal.of.stitches.log.li
 access_orls_gen_surgery_monthly_perf_log_lines,access.orls.gen.surgery.monthly.perf.log.lines,model_orls_gen_surgery_monthly_perf_log_lines,,1,1,1,1
 access_orls_gen_surgery_rotation_cl_pres_log_lines,access.orls.gen.surgery.rotation.cl.pres.log.lines,model_orls_gen_surgery_rotation_cl_pres_log_lines,,1,1,1,1
 access_orls_gen_surgery_teaching_rounds_attended_log_lines,access.orls.gen.surgery.teaching.rounds.attended.log.lines,model_orls_gen_surgery_teaching_rounds_attended_log_lines,,1,1,1,1
+access_orls_gen_surgery_resident_log,access.orls.gen.surgery.resident.log,model_orls_gen_surgery_resident_log,,1,1,1,1
 
 
 

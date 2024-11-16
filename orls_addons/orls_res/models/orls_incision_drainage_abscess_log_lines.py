@@ -10,7 +10,7 @@ class OrlsIncisionDrainageAbscessLogLines(models.Model):
     _name = "orls.incision.drainage.abscess.log.lines"
     _description = "Orls Incision Drainage Abscess Log Lines"
 
-    orls_incision_drainage_abscess_log_id = fields.Many2one(
+    orls_incision_drainage_abscess_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Incision and drainage of Abscess 1 (O) 2(p)"
     )

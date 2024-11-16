@@ -30,11 +30,11 @@
                 <field name="end_date"/>
                 <field name="state"/>
                 <!--                                <button name="%(action_open_form_view_server)d"-->
-<!--                <button name="open_results_submission_wizard"-->
-<!--                        confirm="You are about to start entering your results for submission. Are you sure you want to proceed?"-->
-<!--                        string="Submit Results"-->
-<!--                        type="object"-->
-<!--                        class="btn-primary"/>-->
+                <!--                <button name="open_results_submission_wizard"-->
+                <!--                        confirm="You are about to start entering your results for submission. Are you sure you want to proceed?"-->
+                <!--                        string="Submit Results"-->
+                <!--                        type="object"-->
+                <!--                        class="btn-primary"/>-->
                 <!--                                        invisible="user_in_assigned_company_and_open == False"/>-->
                 <!--                        context="{'hide_participants_page': True, 'hide_internal_states': True, 'open_notebook2': True}"-->
                 <!--                        invisible="user_in_assigned_company_and_open == False"/>-->
@@ -67,11 +67,11 @@
                             confirm="Are you sure you want to send back?"
                             string="Send Back" class="btn-primary" type="object" context="{'validate_analytic': True}"
                             invisible="state != 'supervisor' "/>
-                    <button name="action_open_eqa_result" data-hotkey="v"
-                            confirm="Are you sure you want to open this PT cycle?"
-                            string="Open PT Cycle" class="btn-primary" type="object"
-                            context="{'validate_analytic': True}"
-                            invisible="state != 'supervisor' "/>
+<!--                    <button name="action_open_eqa_result" data-hotkey="v"-->
+<!--                            confirm="Are you sure you want to open this PT cycle?"-->
+<!--                            string="Open PT Cycle" class="btn-primary" type="object"-->
+<!--                            context="{'validate_analytic': True}"-->
+<!--                            invisible="state != 'supervisor' "/>-->
 
                     <field name="state" context="{'validate_analytic': True}" widget="statusbar"
                            statusbar_visible="draft,supervisor,approved,open,extended,closed,resultsPublished"
@@ -162,38 +162,59 @@
                         </page>
 
                     </notebook>
-                    <notebook>
-                        <page string="Monthly Performance Review" id="rif_detection_result">
-                            <field name="orls_operation_monthly_review_lines_ids">
-                                <tree editable="top">
-                                    <field name="month"/>
-                                    <field name="resident_comment"/>
-                                    <field name="supervisor_comment"/>
-                                    <field name="resident_coordinator_comment"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Clinical/Audit Meetings Presented" id="rif_detection_result">
-                            <field name="orls_operation_clinical_or_audit_meetings_presented_lines_ids">
-                                <tree editable="top">
-                                    <field name="date"/>
-                                    <field name="topic"/>
-                                    <field name="venue"/>
-                                    <field name="consultant_id"/>
-                                </tree>
-                            </field>
-                        </page>
-                        <page string="Teaching Rounds Attended" id="tb_detection_result">
-                            <field name="orls_operation_teaching_rounds_attended_lines_ids">
-                                <tree editable="top">
-                                    <field name="date"/>
-                                    <field name="ward_round"/>
-                                    <field name="venue"/>
-                                    <field name="consultant_id"/>
-                                </tree>
-                            </field>
-                        </page>
-                    </notebook>
+                    <group>
+                        <button name="download_csv_template" type="object" string="Download Template"
+                                class="btn-secondary"/>
+                    </group>
+
+
+                    <group>
+                        <field name="csv_file" widget="binary" filename="csv_filename"/>
+                        <field name="csv_filename" invisible="1"/>
+                    </group>
+                    <group>
+                        <button name="import_assignments_from_csv" type="object" string="Assign Residents"
+                                class="btn-primary"/>
+                    </group>
+
+<!--                    <button name="download_csv_template" type="object" string="Download CSV Template"-->
+                    <!--                            class="btn-secondary"/>-->
+                    <group>
+                        <field name="employee_ids" widget="many2many_tags" string="Assigned Residents"/>
+                    </group>
+
+                    <!--                    <notebook>-->
+                    <!--                        <page string="Monthly Performance Review" id="rif_detection_result">-->
+                    <!--                            <field name="orls_operation_monthly_review_lines_ids">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="month"/>-->
+                    <!--                                    <field name="resident_comment"/>-->
+                    <!--                                    <field name="supervisor_comment"/>-->
+                    <!--                                    <field name="resident_coordinator_comment"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                        <page string="Clinical/Audit Meetings Presented" id="rif_detection_result">-->
+                    <!--                            <field name="orls_operation_clinical_or_audit_meetings_presented_lines_ids">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="date"/>-->
+                    <!--                                    <field name="topic"/>-->
+                    <!--                                    <field name="venue"/>-->
+                    <!--                                    <field name="consultant_id"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                        <page string="Teaching Rounds Attended" id="tb_detection_result">-->
+                    <!--                            <field name="orls_operation_teaching_rounds_attended_lines_ids">-->
+                    <!--                                <tree editable="top">-->
+                    <!--                                    <field name="date"/>-->
+                    <!--                                    <field name="ward_round"/>-->
+                    <!--                                    <field name="venue"/>-->
+                    <!--                                    <field name="consultant_id"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
 
                     <!--                    <notebook groups="zaneqas_tb.group_cdl_staff">-->
                     <!--                                        <notebook groups="zaneqas_tb.group_cdl_staff">-->

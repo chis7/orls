@@ -10,7 +10,7 @@ class OrlsGenSurgeryRotationClinicalPresentationsLogLines(models.Model):
     _name = "orls.gen.surgery.rotation.cl.pres.log.lines"
     _description = "Orls General Surgery Rotation Clinical Presentations Log Lines"
 
-    orls_operation_clinical_presentation_log_id = fields.Many2one(
+    orls_operation_clinical_presentation_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Clinical Presentations Made"
     )

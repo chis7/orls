@@ -27,6 +27,7 @@
                 <field name="state" readonly="1"/>
                 <field name="start_date" readonly="1"/>
                 <field name="end_date" readonly="1"/>
+                <field name="user_in_assigned_rotation" column_invisible="True"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="o_kanban_details">
@@ -40,22 +41,23 @@
                                 </div>
                             </div>
                             <div class="o_kanban_record_right">
-                                <span>Start Date:</span>
+                                <span>Start Date :</span>
                                 <t t-esc="record.start_date.value"/>
                                 <br/>
-                                <span>End Date:</span>
+                                <span>End Date :</span>
                                 <t t-esc="record.end_date.value"/>
                             </div>
                             <div>
-                                <span>Status:</span>
+                                <span>Status :</span>
                                 <t t-esc="record.state.value"/>
                             </div>
                             <br/>
                             <div class="o_kanban_record_bottom">
                                 <button name="open_results_submission_wizard"
                                         confirm="You are about to start entering your results for submission. Are you sure you want to proceed?"
-                                        string="Submit Report"
+                                        string="Create Log"
                                         type="object"
+                                        invisible="user_in_assigned_rotation == False"
                                         class="btn-primary"/>
                             </div>
                         </div>

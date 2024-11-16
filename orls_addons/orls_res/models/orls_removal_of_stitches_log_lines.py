@@ -10,7 +10,7 @@ class OrlsRemovalOfStitchesLogLines(models.Model):
     _name = "orls.removal.of.stitches.log.lines"
     _description = "Orls Removal of Stitches Log Lines"
 
-    orls_removal_of_stitches_log_id = fields.Many2one(
+    orls_removal_of_stitches_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Removal of stitches 10(p)"
     )

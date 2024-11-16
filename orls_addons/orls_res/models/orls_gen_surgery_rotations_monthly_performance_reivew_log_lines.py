@@ -10,7 +10,7 @@ class OrlsGenSurgeryRotationMonthlyPerformanceReviewLogLines(models.Model):
     _name = "orls.gen.surgery.monthly.perf.log.lines"
     _description = "Orls General Surgery Rotation Monthly Performance Review Log Lines"
 
-    orls_operation_monthly_review_lines_log_id = fields.Many2one(
+    orls_operation_monthly_review_id = fields.Many2one(
         'orls.gen.surgery.resident.log',
         string="Monthly Performance Review"
     )

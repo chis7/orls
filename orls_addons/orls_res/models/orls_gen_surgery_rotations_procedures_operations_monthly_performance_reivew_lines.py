@@ -10,7 +10,7 @@ class OrlsGenSurgeryRotationProceduresOperationsMonthlyPerformanceReviewLines(mo
     _name = "orls.gen.surgery.rotation.monthly.perf.lines"
     _description = "Orls Gen Surgery Monthly Performance Review Lines"
 
-    orls_operation_monthly_review_id = fields.Many2one(
+    orls_operation_monthly_review_main_id = fields.Many2one(
         'orls.gen.surgery.rotation.procedures.operations',
         string="Monthly Performance Review"
     )

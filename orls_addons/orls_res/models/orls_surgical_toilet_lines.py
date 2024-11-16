@@ -10,7 +10,7 @@ class OrlsSurgicalToiletLines(models.Model):
     _name = "orls.gen.surgical.toilet.lines"
     _description = "Orls Surgical Toilet Lines"
 
-    orls_surgical_toilet_id = fields.Many2one(
+    orls_surgical_toilet_main_id = fields.Many2one(
         'orls.gen.surgery.rotation.procedures.operations',
         string="Surgical Toilet"
     )
