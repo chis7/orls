@@ -15,7 +15,7 @@ class OrlsGenSurgeryRotationMonthlyPerformanceReviewLogLines(models.Model):
         string="Monthly Performance Review"
     )
 
-    month = fields.Selection(
+    m_p_month = fields.Selection(
         selection=[
             ("1", "ONE (1)"),
             ("2", "TWO (2)"),
@@ -25,9 +25,9 @@ class OrlsGenSurgeryRotationMonthlyPerformanceReviewLogLines(models.Model):
         tracking=True
     )
 
-    resident_comment = fields.Text(string="Resident's Comment", tracking=True)
-    resident_comment_date = fields.Date(string="Resident's Comment Date", tracking=True)
-    supervisor_comment = fields.Text(string="Supervisor's Comment", tracking=True)
-    supervisor_comment_date = fields.Date(string="Supervisor's Comment Date", tracking=True)
-    resident_coordinator_comment = fields.Text(string="Resident Coordinator's Comment", tracking=True)
-    resident_coordinator_comment_date = fields.Date(string="Resident Coordinator's Comment Date", tracking=True)
+    m_p_resident_comment = fields.Text(string="Resident's Comment", tracking=True)
+    m_p_resident_comment_date = fields.Date(string="Resident's Comment Date", tracking=True)
+    m_p_supervisor_comment = fields.Text(string="Supervisor's Comment", tracking=True)
+    m_p_supervisor_comment_date = fields.Date(string="Supervisor's Comment Date", tracking=True)
+    m_p_resident_coordinator_comment = fields.Text(string="Resident Coordinator's Comment", tracking=True)
+    m_p_resident_coordinator_comment_date = fields.Date(string="Resident Coordinator's Comment Date", tracking=True)

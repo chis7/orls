@@ -15,7 +15,7 @@ class OrlsGenSurgeryRotationTeachingRoundsAttendedLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Teaching Rounds Attended"
     )
-    date = fields.Date(string="Date", store=True)
-    ward_round = fields.Char(string="Ward Round", store=True)
-    venue = fields.Char(string="Venue", store=True)
-    consultant_id = fields.Many2one('res.employee', string="Consultant/Supervisor")
+    t_r_date = fields.Date(string="Date", store=True)
+    t_r_ward_round = fields.Char(string="Ward Round", store=True)
+    t_r_venue = fields.Char(string="Venue", store=True)
+    t_r_consultant_id = fields.Many2one('res.employee', string="Consultant/Supervisor")

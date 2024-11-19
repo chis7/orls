@@ -14,7 +14,7 @@ class OrlsGenSurgeryRotationClinicalPresentationsLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Clinical Presentations Made"
     )
-    date = fields.Date(string="Date", store=True)
-    topic = fields.Char(string="Topic", store=True)
-    venue = fields.Char(string="Venue", store=True)
-    consultant_id = fields.Many2one('res.employee', string="Consultant")
+    c_a_date = fields.Date(string="Date", store=True)
+    c_a_topic = fields.Char(string="Topic", store=True)
+    c_a_venue = fields.Char(string="Venue", store=True)
+    c_a_consultant_id = fields.Many2one('res.employee', string="Consultant")

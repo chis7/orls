@@ -235,15 +235,15 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
             raise UserError("Referenced record does not exist.")
 
         form_data = {
-            'name': self.name.id,
-            'internship_center_id': self.internship_center_id.id,
-            'hpcz_Reg_No': self.hpcz_Reg_No,
-            'hpcz_license_No': self.hpcz_license_No,
-            'start_date': self.start_date,
-            'end_date': self.end_date,
-            'state': 'draft',
-            'pdf_file': self.pdf_file,
-            'pdf_filename': self.pdf_filename,
+            'r_l_name': self.name.id,
+            'r_l_internship_center_id': self.internship_center_id.id,
+            'r_l_hpcz_Reg_No': self.hpcz_Reg_No,
+            'r_l_hpcz_license_No': self.hpcz_license_No,
+            'r_l_start_date': self.start_date,
+            'r_l_end_date': self.end_date,
+            'r_l_state': 'draft',
+            'r_l_pdf_file': self.pdf_file,
+            'r_l_pdf_filename': self.pdf_filename,
         }
 
         new_record = self.env['orls.gen.surgery.resident.log'].create(form_data)
@@ -251,174 +251,78 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
 
         form_data2 = [{
             'orls_surgical_toilet_id': new_record_id,
-            'resident_involvement': line.resident_involvement,
-            'number_of_cases': line.number_of_cases,
-            'date': line.date,
-            'file_no': line.file_no,
+            's_t_resident_involvement': line.resident_involvement,
+            's_t_number_of_cases': line.number_of_cases,
+            's_t_date': line.date,
+            's_t_file_no': line.file_no,
         } for line in self.orls_surgical_toilet_ids]
         self.env['orls.gen.surgical.toilet.log.lines'].create(form_data2)
 
         form_data3 = [{
             'orls_suturing_wound_id': new_record_id,
-            'resident_involvement': line.resident_involvement,
-            'number_of_cases': line.number_of_cases,
-            'date': line.date,
-            'file_no': line.file_no,
+            's_w_resident_involvement': line.resident_involvement,
+            's_w_number_of_cases': line.number_of_cases,
+            's_w_date': line.date,
+            's_w_file_no': line.file_no,
         } for line in self.orls_suturing_wound_ids]
         self.env['orls.suturing.wound.log.lines'].create(form_data3)
 
         form_data4 = [{
             'orls_incision_drainage_abscess_id': new_record_id,
-            'number_of_cases': line.number_of_cases,
-            'date': line.date,
-            'file_no': line.file_no,
-            'resident_involvement': line.resident_involvement,
+            'a_d_number_of_cases': line.number_of_cases,
+            'a_d_date': line.date,
+            'a_d_file_no': line.file_no,
+            'a_d_resident_involvement': line.resident_involvement,
         } for line in self.orls_incision_drainage_abscess_ids]
         self.env['orls.incision.drainage.abscess.log.lines'].create(form_data4)
 
         form_data5 = [{
             'orls_insertion_chest_tubes_id': new_record_id,
-            'resident_involvement': line.resident_involvement,
-            'number_of_cases': line.number_of_cases,
-            'date': line.date,
-            'file_no': line.file_no,
+            'c_t_resident_involvement': line.resident_involvement,
+            'c_t_number_of_cases': line.number_of_cases,
+            'c_t_date': line.date,
+            'c_t_file_no': line.file_no,
         } for line in self.orls_insertion_chest_tubes_ids]
         self.env['orls.insertion.chest.tubes.log.lines'].create(form_data5)
 
         form_data6 = [{
             'orls_removal_of_stitches_id': new_record_id,
-            'resident_involvement': line.resident_involvement,
-            'number_of_cases': line.number_of_cases,
-            'date': line.date,
-            'file_no': line.file_no,
+            'r_s_resident_involvement': line.resident_involvement,
+            'r_s_number_of_cases': line.number_of_cases,
+            'r_s_date': line.date,
+            'r_s_file_no': line.file_no,
         } for line in self.orls_removal_of_stitches_ids]
         self.env['orls.removal.of.stitches.log.lines'].create(form_data6)
 
         form_data7 = [{
             'orls_operation_monthly_review_id': new_record_id,
-            'month': line.month,
-            'resident_comment': line.resident_comment,
-            'resident_comment_date': line.resident_comment_date,
-            'supervisor_comment': line.supervisor_comment,
-            'supervisor_comment_date': line.supervisor_comment_date,
-            'resident_coordinator_comment': line.resident_coordinator_comment,
-            'resident_coordinator_comment_date': line.resident_coordinator_comment_date,
+            'm_p_month': line.month,
+            'm_p_resident_comment': line.resident_comment,
+            'm_p_resident_comment_date': line.resident_comment_date,
+            'm_p_supervisor_comment': line.supervisor_comment,
+            'm_p_supervisor_comment_date': line.supervisor_comment_date,
+            'm_p_resident_coordinator_comment': line.resident_coordinator_comment,
+            'm_p_resident_coordinator_comment_date': line.resident_coordinator_comment_date,
         } for line in self.orls_operation_monthly_review_lines_ids]
         self.env['orls.gen.surgery.monthly.perf.log.lines'].create(form_data7)
 
         form_data8 = [{
             'orls_operation_clinical_presentation_id': new_record_id,
-            'date': line.date,
-            'topic': line.topic,
-            'venue': line.venue,
-            'consultant_id': line.consultant_id.id,
+            'c_a_date': line.date,
+            'c_a_topic': line.topic,
+            'c_a_venue': line.venue,
+            'c_a_consultant_id': line.consultant_id.id,
         } for line in self.orls_operation_clinical_or_audit_meetings_presented_lines_ids]
         self.env['orls.gen.surgery.rotation.cl.pres.log.lines'].create(form_data8)
 
         form_data9 = [{
             'orls_operation_clinical_teaching_rounds_id': new_record_id,
-            'date': line.date,
-            'ward_round': line.ward_round,
-            'venue': line.venue,
-            'consultant_id': line.consultant_id.id,
+            't_r_date': line.date,
+            't_r_ward_round': line.ward_round,
+            't_r_venue': line.venue,
+            't_r_consultant_id': line.consultant_id.id,
         } for line in self.orls_operation_teaching_rounds_attended_lines_ids]
         self.env['orls.gen.surgery.teaching.rounds.attended.log.lines'].create(form_data9)
-
-    # def action_submit_results(self):
-    #     # Ensure the referenced record exists
-    #     my_rotation = self.env['orls.gen.surgery.rotation.procedures.operations'].browse(self.id)
-    #     if not my_rotation.exists():
-    #         raise UserError("Referenced record does not exist.")
-    #
-    #     form_data = {
-    #         'name': self.id,
-    #         'internship_center_id': self.internship_center_id.id,
-    #         'hpcz_Reg_No': self.hpcz_Reg_No,
-    #         'hpcz_license_No': self.hpcz_license_No,
-    #         'start_date': self.start_date,
-    #         'end_date': self.end_date,
-    #         'state': 'draft',
-    #         'pdf_file': self.pdf_file,
-    #         'pdf_filename': self.pdf_filename,
-    #     }
-    #
-    #     new_record = self.env['orls.gen.surgery.resident.log'].create(form_data)
-    #     new_record_id = new_record.id
-    #
-    #     form_data2 = [{
-    #         'orls_surgical_toilet_id': new_record_id,
-    #         'resident_involvement': line.resident_involvement,
-    #         'number_of_cases': line.number_of_cases,
-    #         'date': line.date,
-    #         'file_no': line.file_no,
-    #     } for line in self.orls_surgical_toilet_ids]
-    #     self.env['orls.gen.surgical.toilet.log.lines'].create(form_data2)
-    #
-    #     form_data3 = [{
-    #         'orls_suturing_wound_id': new_record_id,
-    #         'resident_involvement': line.resident_involvement,
-    #         'number_of_cases': line.number_of_cases,
-    #         'date': line.date,
-    #         'file_no': line.file_no,
-    #     } for line in self.orls_suturing_wound_ids]
-    #     self.env['orls.suturing.wound.log.lines'].create(form_data3)
-    #
-    #     form_data4 = [{
-    #         'orls_incision_drainage_abscess_id': new_record_id,
-    #         'number_of_cases': line.number_of_cases,
-    #         'date': line.date,
-    #         'file_no': line.file_no,
-    #         'resident_involvement': line.resident_involvement,
-    #     } for line in self.orls_incision_drainage_abscess_ids]
-    #     self.env['orls.incision.drainage.abscess.log.lines'].create(form_data4)
-    #
-    #     form_data5 = [{
-    #         'orls_insertion_chest_tubes_id': new_record_id,
-    #         'resident_involvement': line.resident_involvement,
-    #         'number_of_cases': line.number_of_cases,
-    #         'date': line.date,
-    #         'file_no': line.file_no,
-    #     } for line in self.orls_insertion_chest_tubes_ids]
-    #     self.env['orls.insertion.chest.tubes.log.lines'].create(form_data5)
-    #
-    #     form_data6 = [{
-    #         'orls_removal_of_stitches_id': new_record_id,
-    #         'resident_involvement': line.resident_involvement,
-    #         'number_of_cases': line.number_of_cases,
-    #         'date': line.date,
-    #         'file_no': line.file_no,
-    #     } for line in self.orls_removal_of_stitches_ids]
-    #     self.env['orls.removal.of.stitches.log.lines'].create(form_data6)
-    #
-    #     form_data7 = [{
-    #         'orls_operation_monthly_review_id': new_record_id,
-    #         'month': line.month,
-    #         'resident_comment': line.resident_comment,
-    #         'resident_comment_date': line.resident_comment_date,
-    #         'supervisor_comment': line.supervisor_comment,
-    #         'supervisor_comment_date': line.supervisor_comment_date,
-    #         'resident_coordinator_comment': line.resident_coordinator_comment,
-    #         'resident_coordinator_comment_date': line.resident_coordinator_comment_date,
-    #     } for line in self.orls_operation_monthly_review_lines_ids]
-    #     self.env['orls.gen.surgery.monthly.perf.log.lines'].create(form_data7)
-    #
-    #     form_data8 = [{
-    #         'orls_operation_clinical_presentation_id': new_record_id,
-    #         'date': line.date,
-    #         'topic': line.topic,
-    #         'venue': line.venue,
-    #         'consultant_id': line.consultant_id.id,
-    #     } for line in self.orls_operation_clinical_or_audit_meetings_presented_lines_ids]
-    #     self.env['orls.gen.surgery.rotation.cl.pres.log.lines'].create(form_data8)
-    #
-    #     form_data9 = [{
-    #         'orls_operation_clinical_teaching_rounds_id': new_record_id,
-    #         'date': line.date,
-    #         'ward_round': line.ward_round,
-    #         'venue': line.venue,
-    #         'consultant_id': line.consultant_id.id,
-    #     } for line in self.orls_operation_teaching_rounds_attended_lines_ids]
-    #     self.env['orls.gen.surgery.teaching.rounds.attended.log.lines'].create(form_data9)
 
     def validate_csv_file(self, csv_content):
         csv_reader = csv.reader(StringIO(csv_content))

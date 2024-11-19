@@ -13,17 +13,17 @@ class OrlsGenSurgeryResidentLog(models.Model):
     _inherit = ["mail.thread"]
     _description = "Orls Surgery Resident Log"
 
-    internship_center_id = fields.Many2one('res.company',string="Internship Center")
-    hpcz_Reg_No = fields.Integer(string="HPCZ Reg. No.")
-    hpcz_license_No = fields.Char(string="HPCZ License No.")
-    supervisor_id = fields.Many2one('res.employee',  string="Supervisor's Name", )
-    start_date = fields.Date(string="Start Date", required=True)
-    end_date = fields.Date(string="End Date", required=True)
-    name = fields.Many2one('orls.medical.disciplines', string="Discipline")
+    r_l_internship_center_id = fields.Many2one('res.company',string="Internship Center")
+    r_l_hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.")
+    r_l_hpcz_license_No = fields.Char(string="HPCZ License No.")
+    r_l_supervisor_id = fields.Many2one('res.employee',  string="Supervisor's Name", )
+    r_l_start_date = fields.Date(string="Start Date", required=True)
+    r_l_end_date = fields.Date(string="End Date", required=True)
+    r_l_name = fields.Many2one('orls.medical.disciplines', string="Discipline")
 
-    supervisor_comment = fields.Text(string="Supervisor Comment", tracking=True)
-    pdf_file = fields.Binary(string="PDF File")
-    pdf_filename = fields.Char(string="PDF Filename")
+    r_l_supervisor_comment = fields.Text(string="Supervisor Comment", tracking=True)
+    r_l_pdf_file = fields.Binary(string="PDF File")
+    r_l_pdf_filename = fields.Char(string="PDF Filename")
 
     orls_surgical_toilet_ids = fields.One2many(
         'orls.gen.surgical.toilet.log.lines',
@@ -68,7 +68,7 @@ class OrlsGenSurgeryResidentLog(models.Model):
         string="Teaching Rounds Attended"
     )
 
-    state = fields.Selection(
+    r_l_state = fields.Selection(
         selection=[
             ("draft", "Draft"),
             ("supervisor", "Supervisor"),

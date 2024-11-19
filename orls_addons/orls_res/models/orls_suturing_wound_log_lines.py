@@ -14,10 +14,10 @@ class OrlsSuturingWoundLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Suturing Wound"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    s_w_number_of_cases = fields.Char(string="# of Cases", store=True)
+    s_w_file_no = fields.Char(string="File No.", store=True)
+    s_w_date = fields.Date(string="Date", store=True)
+    s_w_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),
@@ -26,5 +26,5 @@ class OrlsSuturingWoundLogLines(models.Model):
         string="Resident Involvement",
         tracking=True
     )
-    supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
+    s_w_supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
 

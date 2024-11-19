@@ -14,10 +14,10 @@ class OrlsInsertionChestTubeLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Insertion of chest tubes 3(p)"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    c_t_number_of_cases = fields.Char(string="# of Cases", store=True)
+    c_t_file_no = fields.Char(string="File No.", store=True)
+    c_t_date = fields.Date(string="Date", store=True)
+    c_t_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),

@@ -14,10 +14,10 @@ class OrlsRemovalOfStitchesLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Removal of stitches 10(p)"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    r_s_number_of_cases = fields.Char(string="# of Cases", store=True)
+    r_s_file_no = fields.Char(string="File No.", store=True)
+    r_s_date = fields.Date(string="Date", store=True)
+    r_s_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),

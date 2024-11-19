@@ -14,10 +14,10 @@ class OrlsIncisionDrainageAbscessLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Incision and drainage of Abscess 1 (O) 2(p)"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    a_d_number_of_cases = fields.Char(string="# of Cases", store=True)
+    a_d_file_no = fields.Char(string="File No.", store=True)
+    a_d_date = fields.Date(string="Date", store=True)
+    a_d_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),
@@ -26,5 +26,5 @@ class OrlsIncisionDrainageAbscessLogLines(models.Model):
         string="Resident Involvement",
         tracking=True
     )
-    supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
+    a_d_supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
 

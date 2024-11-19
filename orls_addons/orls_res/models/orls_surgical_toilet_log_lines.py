@@ -14,10 +14,10 @@ class OrlsSurgicalToiletLogLines(models.Model):
         'orls.gen.surgery.resident.log',
         string="Surgical Toilet"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    s_t_number_of_cases = fields.Char(string="# of Cases", store=True)
+    s_t_file_no = fields.Char(string="File No.", store=True)
+    s_t_date = fields.Date(string="Date", store=True)
+    s_t_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),
@@ -26,5 +26,5 @@ class OrlsSurgicalToiletLogLines(models.Model):
         string="Resident Involvement",
         tracking=True
     )
-    supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
+    s_t_supervisor_id = fields.Many2one('res.user', string="Supervisor's Name")
 

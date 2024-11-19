@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <!-- Top menu item -->
-    <menuitem name="orls"
+    <menuitem name="orls                                                "
               id="orls_root"/>
 <!--              web_icon="orls,static/description/icon.png"/>-->
 
     <menuitem id="zaneqas_tb_eqa_root"
-              name="EQA Schemes"
+              name="Rotations"
               parent="orls_root"/>
 
     <menuitem id="zaneqas_tb_mtb_rif_assay"
