@@ -6,7 +6,7 @@
         <field name="model">orls.gen.surgery.resident.log</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="r_l_name"/>
+                <field name="name"/>
                 <field name="r_l_internship_center_id"/>
                 <field name="r_l_start_date"/>
                 <field name="r_l_end_date"/>

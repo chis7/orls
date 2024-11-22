@@ -180,6 +180,20 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
     sample_id = fields.Char(string="Test Sample ID", store=True)
     date_tested = fields.Date(string="Date Tested", store=True)
 
+    user_has_created_log = fields.Boolean(
+        string='User Has Created Log',
+        compute='_compute_user_has_created_log'
+    )
+
+    @api.depends()
+    def _compute_user_has_created_log(self):
+        for record in self:
+            log_exists = self.env['orls.gen.surgery.resident.log'].search_count([
+                ('name', '=', self.env.user.id),
+                ('r_l_rotation_id', '=', record.id)
+            ]) > 0
+            record.user_has_created_log = log_exists
+
     # company_count = fields.Integer(string='Company Count', compute='_compute_company_count', store=True)
 
     def open_results_submission_wizard(self):
@@ -235,7 +249,7 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
             raise UserError("Referenced record does not exist.")
 
         form_data = {
-            'r_l_name': self.name.id,
+            'name': self.name.id,
             'r_l_internship_center_id': self.internship_center_id.id,
             'r_l_hpcz_Reg_No': self.hpcz_Reg_No,
             'r_l_hpcz_license_No': self.hpcz_license_No,

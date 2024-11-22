@@ -3,21 +3,27 @@
     <!-- Top menu item -->
     <menuitem name="orls                                                "
               id="orls_root"/>
-<!--              web_icon="orls,static/description/icon.png"/>-->
+    <!--              web_icon="orls,static/description/icon.png"/>-->
 
     <menuitem id="zaneqas_tb_eqa_root"
-              name="Rotations"
-              parent="orls_root"/>
-
-    <menuitem id="zaneqas_tb_mtb_rif_assay"
-              name="MTB/RIF GeneXpert Assay"
-              parent="zaneqas_tb_eqa_root"
+              name="Residency"
+              parent="orls_root"
               action="action_zaneqas_tb_xpert_eqa_cycles"/>
 
-    <menuitem id="zaneqas_tb_microscopy"
-              name="My Submissions"
-              parent="zaneqas_tb_mtb_rif_assay"
+    <menuitem id="zaneqas_tb_mtb_rif_assay"
+              name="Logbook"
+              parent="zaneqas_tb_eqa_root"
               action="action_zaneqas_tb_xpert_eqa_results"/>
+
+    <!--    <menuitem id="zaneqas_tb_microscopy"-->
+    <!--              name="My Submissions"-->
+    <!--              parent="zaneqas_tb_eqa_root"-->
+    <!--              action="action_zaneqas_tb_xpert_eqa_results"/>-->
+
+    <!--    <menuitem id="zaneqas_tb_microscopy"-->
+    <!--              name="Rotation Logs"-->
+    <!--              parent="zaneqas_tb_mtb_rif_assay"-->
+    <!--              action="action_zaneqas_tb_xpert_eqa_results"/>-->
 
     <menuitem id="zaneqas_tb_eqa_configs"
               name="Configuration"
