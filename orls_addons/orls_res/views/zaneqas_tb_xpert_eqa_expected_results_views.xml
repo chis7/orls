@@ -24,7 +24,7 @@
         <field name="arch" type="xml">
             <tree>
                 <!--                <field name="user_in_assigned_company_and_open" column_invisible="True"/>-->
-                c
+
                 <field name="internship_center_id"/>
                 <field name="start_date"/>
                 <field name="end_date"/>

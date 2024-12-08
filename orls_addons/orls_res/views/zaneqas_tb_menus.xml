@@ -35,18 +35,58 @@
               parent="zaneqas_tb_eqa_configs"
               action="action_orls_medical_disciplines"/>
 
-    <menuitem id="zaneqas_tb_eqa_configs_xpert"
-              name="Xpert"
+    <menuitem id="orls_rotations"
+              name="Rotations"
               parent="zaneqas_tb_eqa_configs"
               action="action_zaneqas_tb_xpert_eqa_expected_results"/>
 
-    <menuitem id="zaneqas_tb_eqa_configs_xpert_expected_results"
-              name="Rotations"
-              parent="zaneqas_tb_eqa_configs_xpert"
+    <menuitem id="orls_surgery"
+              name="General Surgery"
+              parent="orls_rotations"
               action="action_zaneqas_tb_xpert_eqa_expected_results"/>
 
-    <menuitem id="zaneqas_tb_eqa_configs_xpert_assays"
-              name="Xpert Assays"
-              parent="zaneqas_tb_eqa_configs_xpert"
-              action="action_zaneqas_tb_xpert_eqa_config_assays"/>
+    <menuitem id="orls_obs_gyn"
+              name="Obstetrics and Gynaecology"
+              parent="orls_rotations"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+    <menuitem id="orls_obs_sub"
+              name="Obstetrics"
+              parent="orls_obs_gyn"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+    <menuitem id="orls_gyn_sub"
+              name="Gynaecology"
+              parent="orls_obs_gyn"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+
+    <menuitem id="orls_paeds"
+              name="Paeds"
+              parent="orls_rotations"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+
+    <menuitem id="orls_internal_medicine_main"
+              name="Internal Medicine"
+              parent="orls_rotations"
+              action="action_orls_medical_disciplines"/>
+
+    <menuitem id="orls_internal_medicine_sub"
+              name="Internal Medicine"
+              parent="orls_internal_medicine_main"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+
+    <menuitem id="orls_anaesthesia"
+              name="Anaesthesia and Critical Care"
+              parent="orls_internal_medicine_main"
+              action="action_zaneqas_tb_xpert_eqa_expected_results"/>
+
+
+    <!--    <menuitem id="notebook_pages"-->
+    <!--              name="Pages"-->
+    <!--              parent="zaneqas_tb_eqa_configs_xpert"-->
+    <!--              action="action_orls_notebook_pages"/>-->
+
+
+    <!--    <menuitem id="zaneqas_tb_eqa_configs_xpert_assays"-->
+    <!--              name="Xpert Assays"-->
+    <!--              parent="zaneqas_tb_eqa_configs_xpert"-->
+    <!--              action="action_zaneqas_tb_xpert_eqa_config_assays"/>-->
 </odoo>

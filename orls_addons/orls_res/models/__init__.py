@@ -32,3 +32,5 @@ from . import orls_insertion_chest_tubes_log_lines
 from . import orls_removal_of_stitches_log_lines
 from . import orls_surgical_toilet_log_lines
 from . import orls_suturing_wound_log_lines
+
+from . import orls_gen_surgery_notebook_page

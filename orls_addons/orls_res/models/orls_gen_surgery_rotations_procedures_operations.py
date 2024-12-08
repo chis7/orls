@@ -29,6 +29,26 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
     pdf_file = fields.Binary(string="PDF File")
     pdf_filename = fields.Char(string="PDF Filename")
 
+    disciplines = fields.Many2many(
+        'orls.gen.surgery.discipline',
+        string="Disciplines",
+        required=True
+    )
+    notebook_pages_ids = fields.One2many(
+        'orls.gen.surgery.notebook.page',
+        'notebook_pages_id',
+        string="Notebook Pages"
+    )
+
+    @api.onchange('disciplines')
+    def _onchange_disciplines(self):
+        self.notebook_pages = [(5, 0, 0)]  # Clear existing pages
+        for discipline in self.disciplines:
+            self.notebook_pages = [(0, 0, {
+                'name': discipline.name,
+                'discipline_id': discipline.id
+            })]
+
     orls_surgical_toilet_ids = fields.One2many(
         'orls.gen.surgical.toilet.lines',
         'orls_surgical_toilet_main_id',

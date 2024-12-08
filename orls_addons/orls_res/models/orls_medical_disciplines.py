@@ -23,6 +23,12 @@ class OrlsMedicalDisciplines(models.Model):
         required=True,
         tracking=True
     )
+    notebook_pages = fields.One2many(
+        'orls.gen.surgery.notebook.page',
+        'discipline_id',
+        string="Notebook Pages"
+    )
+
 
     def action_save_eqa_config_round_as_draft(self):
 
