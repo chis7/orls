@@ -53,10 +53,16 @@ class OrlsPaedsResidentLog(models.Model):
         string="Urinary Catheterisation 5(a)"
     )
 
-    orls_paeds_phlebotomy_neonates_log_ids = fields.One2many(
-        'orls.paeds.phlebotomy.neonates.log.lines',
-        'orls_paeds_phlebotomy_neonates_log_id',
-        string="Phlebotomy in neonates(5p)"
+    orls_paeds_intraosseus_cannulation_log_ids = fields.One2many(
+        'orls.paeds.intraosseus.cannulation.log.lines',
+        'orls_paeds_intraosseus_cannulation_log_id',
+        string="Intraosseus Cannulation 1(p)"
+    )
+
+    orls_paeds_intravenous_cannulation_log_ids = fields.One2many(
+        'orls.paeds.intravenous.cannulation.log.lines',
+        'orls_paeds_intravenous_cannulation_log_id',
+        string="Intravenous Cannulation 1(p)"
     )
 
 

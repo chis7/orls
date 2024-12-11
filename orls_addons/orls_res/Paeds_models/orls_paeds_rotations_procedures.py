@@ -78,6 +78,18 @@ class OrlsPaedsRotationProcedures(models.Model):
         string="Phlebotomy in neonates(5p)"
     )
 
+    orls_paeds_intraosseus_cannulation_main_ids = fields.One2many(
+        'orls.paeds.intraosseus.cannulation.lines',
+        'orls_paeds_intraosseus_cannulation_main_id',
+        string="Intraosseus Cannulation 1(p)"
+    )
+
+    orls_paeds_intravenous_cannulation_main_ids = fields.One2many(
+        'orls.paeds.intravenous.cannulation.lines',
+        'orls_paeds_intravenous_cannulation_main_id',
+        string="Intraosseus Cannulation 1(p)"
+    )
+
 
 
 
