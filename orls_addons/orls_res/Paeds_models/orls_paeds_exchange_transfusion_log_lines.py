@@ -6,18 +6,18 @@ from odoo.exceptions import UserError, ValidationError
 import random
 
 
-class OrlsInsertionChestTubeLines(models.Model):
-    _name = "orls.insertion.chest.tubes.lines"
-    _description = "Orls Insertion Chest Tubes Lines"
+class OrlsPaedsExchangeTransfusionLogLines(models.Model):
+    _name = "orls.paeds.exchange.transfusion.log.lines"
+    _description = "Orls Paeds Exchange Transfusion Log Lines"
 
-    orls_insertion_chest_tubes_main_id = fields.Many2one(
-        'orls.gen.surgery.rotation.procedures.operations',
-        string="Insertion of chest tubes 3(p)"
+    orls_paeds_exchange_transfusion_log_id = fields.Many2one(
+        'orls.paeds.resident.log',
+        string="Exchange Transfusion 2(p)*"
     )
-    number_of_cases = fields.Char(string="# of Cases", store=True)
-    file_no = fields.Char(string="File No.", store=True)
-    date = fields.Date(string="Date", store=True)
-    resident_involvement = fields.Selection(
+    e_t_number_of_cases = fields.Char(string="# of Cases", store=True)
+    e_t_file_no = fields.Char(string="File No.", store=True)
+    e_t_date = fields.Date(string="Date", store=True)
+    e_t_resident_involvement = fields.Selection(
         selection=[
             ("P", "Performed"),
             ("A", "Assisted"),

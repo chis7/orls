@@ -6,13 +6,13 @@ from odoo.exceptions import UserError, ValidationError
 import random
 
 
-class OrlsInsertionChestTubeLines(models.Model):
-    _name = "orls.insertion.chest.tubes.lines"
-    _description = "Orls Insertion Chest Tubes Lines"
+class OrlsPaedsBloodTransfusionLines(models.Model):
+    _name = "orls.paeds.blood.transfusion.lines"
+    _description = "Orls Paeds Blood Transfusion Lines"
 
-    orls_insertion_chest_tubes_main_id = fields.Many2one(
-        'orls.gen.surgery.rotation.procedures.operations',
-        string="Insertion of chest tubes 3(p)"
+    orls_paeds_blood_transfusion_main_id = fields.Many2one(
+        'orls.paeds.rotation.procedures',
+        string="Blood Transfusion 10(p)"
     )
     number_of_cases = fields.Char(string="# of Cases", store=True)
     file_no = fields.Char(string="File No.", store=True)

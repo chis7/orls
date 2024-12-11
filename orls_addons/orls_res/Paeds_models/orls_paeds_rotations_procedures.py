@@ -8,10 +8,10 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
-class OrlsGenSurgeryRotationProceduresOperations(models.Model):
-    _name = "orls.gen.surgery.rotation.procedures.operations"
+class OrlsPaedsRotationProcedures(models.Model):
+    _name = "orls.paeds.rotation.procedures"
     _inherit = ["mail.thread"]
-    _description = "Orls General Surgery Rotation Procedures and Operations"
+    _description = "Orls Paeds Rotation Procedures"
 
     internship_center_id = fields.Many2one('res.company', string="Internship Center", required=True)
     hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.", required=True)
@@ -49,53 +49,42 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
                 'discipline_id': discipline.id
             })]
 
-    orls_surgical_toilet_ids = fields.One2many(
-        'orls.gen.surgical.toilet.lines',
-        'orls_surgical_toilet_main_id',
-        string="Surgical toilet-10(p)"
-    )
-    orls_suturing_wound_ids = fields.One2many(
-        'orls.suturing.wound.lines',
-        'orls_suturing_wound_main_id',
-        string="Suturing Wound-10(p)"
-    )
-    orls_incision_drainage_abscess_ids = fields.One2many(
-        'orls.incision.drainage.abscess.lines',
-        'orls_incision_drainage_abscess_main_id',
-        string="Incision and drainage of Abscess 1 (O) 2(p)"
-    )
-    orls_insertion_chest_tubes_ids = fields.One2many(
-        'orls.insertion.chest.tubes.lines',
-        'orls_insertion_chest_tubes_main_id',
-        string="Insertion of chest tubes 3(p)"
+    orls_ascitic_tap_main_ids = fields.One2many(
+        'orls.paeds.ascitic.tap.lines',
+        'orls_ascitic_tap_main_id',
+        string="Ascitic Tap 2(p)"
     )
 
-    orls_removal_of_stitches_ids = fields.One2many(
-        'orls.removal.of.stitches.lines',
-        'orls_removal_of_stitches_main_id',
-        string="Removal of stitches 10(p)"
+    orls_paeds_exchange_transfusion_main_ids = fields.One2many(
+        'orls.paeds.exchange.transfusion.lines',
+        'orls_paeds_exchange_transfusion_main_id',
+        string="Exchange Transfusion  2(p)*"
     )
 
-    # orls_operation_lines_ids = fields.One2many(
-    #     'orls.gen.surgery.rotation.procedures.operations.lines',
-    #     'orls_operation_id',
-    #     string="Operation Details"
-    # )
-    orls_operation_monthly_review_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.monthly.perf.lines',
-        'orls_operation_monthly_review_main_id',
-        string="Monthly review of the performance"
+    orls_paeds_blood_transfusion_main_ids = fields.One2many(
+        'orls.paeds.blood.transfusion.lines',
+        'orls_paeds_blood_transfusion_main_id',
+        string="Blood Transfusion 10(p)"
     )
-    orls_operation_clinical_or_audit_meetings_presented_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.procedures.operations.cl.pres.lines',
-        'orls_operation_clinical_presentation_main_id',
-        string="Details of Clinical/Audit Meetings Presented"
+    orls_paeds_urinary_catherterisation_main_ids = fields.One2many(
+        'orls.paeds.urinary.catheterisation.lines',
+        'orls_paeds_urinary_catherterisation_main_id',
+        string="Urinary Catheterisation 5(a)"
     )
-    orls_operation_teaching_rounds_attended_lines_ids = fields.One2many(
-        'orls.gen.surgery.rotation.teaching.rounds.attended.lines',
-        'orls_operation_clinical_teaching_rounds_main_id',
-        string="Teaching Rounds Attended"
+
+    orls_paeds_phlebotomy_neonates_main_ids = fields.One2many(
+        'orls.paeds.phlebotomy.neonates.lines',
+        'orls_paeds_phlebotomy_neonates_main_id',
+        string="Phlebotomy in neonates(5p)"
     )
+
+
+
+
+
+
+
+
     user_id = fields.Many2one('res.users', string="User", related='create_uid', store=True)
 
     csv_file = fields.Binary(string="CSV File")
