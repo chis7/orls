@@ -77,6 +77,11 @@ class OrlsPaedsRotationProcedures(models.Model):
         'orls_paeds_phlebotomy_neonates_main_id',
         string="Phlebotomy in neonates(5p)"
     )
+    orls_paeds_phlebotomy_older_children_main_ids = fields.One2many(
+        'orls.paeds.phlebotomy.older.children.lines',
+        'orls_paeds_phlebotomy_older_children_main_id',
+        string="Phlebotomy in older children(5p)"
+    )
 
     orls_paeds_intraosseus_cannulation_main_ids = fields.One2many(
         'orls.paeds.intraosseus.cannulation.lines',
@@ -91,7 +96,7 @@ class OrlsPaedsRotationProcedures(models.Model):
     )
 
     orls_paeds_ng_tube_insertion_main_ids = fields.One2many(
-        'orls.paeds.ng.tube.insertion.log.lines',
+        'orls.paeds.ng.tube.insertion.lines',
         'orls_paeds_ng_tube_insertion_main_id',
         string="NG Tube insertion (NBU) 10(p)"
     )

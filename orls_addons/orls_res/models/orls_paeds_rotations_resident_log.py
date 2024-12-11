@@ -43,7 +43,7 @@ class OrlsPaedsResidentLog(models.Model):
 
     orls_paeds_blood_transfusion_log_ids = fields.One2many(
         'orls.paeds.blood.transfusion.log.lines',
-        'orls_paeds_exchange_transfusion_log_id',
+        'orls_paeds_blood_transfusion_log_id',
         string="Blood Transfusion 10(p)"
     )
 
@@ -51,6 +51,18 @@ class OrlsPaedsResidentLog(models.Model):
         'orls.paeds.urinary.catherterisation.log.lines',
         'orls_paeds_urinary_catheterisation_log_id',
         string="Urinary Catheterisation 5(a)"
+    )
+
+    orls_paeds_phlebotomy_neonates_log_ids = fields.One2many(
+        'orls.paeds.phlebotomy.neonates.log.lines',
+        'orls_paeds_phlebotomy_neonates_log_id',
+        string="Phlebotomy in neonates(5p)"
+    )
+
+    orls_paeds_phlebotomy_older_children_log_ids = fields.One2many(
+        'orls.paeds.phlebotomy.older.children.log.lines',
+        'orls_paeds_phlebotomy_older_children_log_id',
+        string="Phlebotomy in older children(5p)"
     )
 
     orls_paeds_intraosseus_cannulation_log_ids = fields.One2many(

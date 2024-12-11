@@ -22,7 +22,6 @@ from . import orls_insertion_chest_tubes_lines
 from . import orls_removal_of_stitches_lines
 from . import orls_surgical_toilet_lines
 from . import orls_suturing_wound_lines
-
 from . import orls_gen_surgery_rotations_clinical_presentations_log_lines
 from . import orls_gen_surgery_rotations_monthly_performance_reivew_log_lines
 from . import orls_gen_surgery_rotations_resident_log
@@ -32,5 +31,30 @@ from . import orls_insertion_chest_tubes_log_lines
 from . import orls_removal_of_stitches_log_lines
 from . import orls_surgical_toilet_log_lines
 from . import orls_suturing_wound_log_lines
-
 from . import orls_gen_surgery_notebook_page
+
+
+from . import orls_paeds_ascitic_tap_lines
+from . import orls_paeds_ascitic_tap_log_lines
+from . import orls_paeds_blood_transfusion_lines
+from . import orls_paeds_blood_transfusion_log_lines
+from . import orls_paeds_exchange_transfusion_lines
+from . import orls_paeds_exchange_transfusion_log_lines
+from . import orls_paeds_intraosseus_cannulation_lines
+from . import orls_paeds_intraosseus_cannulation_log_lines
+from . import orls_paeds_intravenous_cannulation_lines
+from . import orls_paeds_intravenous_cannulation_log_lines
+from . import orls_paeds_iv_cannulation_lines
+from . import orls_paeds_iv_cannulation_log_lines
+from . import orls_paeds_lumbar_puncture_lines
+from . import orls_paeds_lumbar_puncture_log_lines
+from . import orls_paeds_ng_tube_insertion_lines
+from . import orls_paeds_ng_tube_insertion_log_lines
+from . import orls_paeds_phlebotomy_neonates_lines
+from . import orls_paeds_phlebotomy_neonates_log_lines
+from . import orls_paeds_phlebotomy_older_children_lines
+from . import orls_paeds_phlebotomy_older_children_log_lines
+from . import orls_paeds_rotations_procedures
+from . import orls_paeds_rotations_resident_log
+from . import orls_paeds_urinary_catheterisation_lines
+from . import orls_paeds_urinary_catheterisation_log_lines

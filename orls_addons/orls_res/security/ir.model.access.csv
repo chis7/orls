@@ -27,8 +27,6 @@ access_orls_gen_surgery_resident_log,access.orls.gen.surgery.resident.log,model_
 access_orls_gen_surgery_notebook_page,access.orls.gen.surgery.notebook.page,model_orls_gen_surgery_notebook_page,,1,1,1,1
 
 
-
-
 access_zaneqas_tb_xpert_eqa_result,access.zaneqas.tb.xpert.eqa.result,model_zaneqas_tb_xpert_eqa_result,,1,1,1,1
 access_zaneqas_tb_xpert_eqa_result_lines,access.zaneqas.tb.xpert.eqa.result.lines,model_zaneqas_tb_xpert_eqa_result_lines,,1,1,1,1
 access_zaneqas_tb_xpert_eqa_result_error_code_lines,access.zaneqas.tb.xpert.eqa.result.error.code.lines,model_zaneqas_tb_xpert_eqa_result_error_code_lines,,1,1,1,1
@@ -44,5 +42,32 @@ access_zaneqas_tb_xpert_eqa_result_wizard_lines,access.zaneqas.tb.xpert.eqa.resu
 access_zaneqas_tb_xpert_eqa_result_wizard_error_code_lines,access.zaneqas.tb.xpert.eqa.result.wizard.error.code.lines,model_zaneqas_tb_xpert_eqa_result_wizard_error_code_lines,,1,1,1,1
 access_zaneqas_tb_xpert_eqa_rounds_sample_lines,access.zaneqas.tb.xpert.eqa.rounds.sample.lines,model_zaneqas_tb_xpert_eqa_rounds_sample_lines,,1,1,1,1
 access_res_company_user,access.res.company.user,base.model_res_company,base.group_user,1,0,0,0
+
+
+access_orls_paeds_ascitic_tap_lines,access.orls.paeds.ascitic.tap.lines,model_orls_paeds_ascitic_tap_lines,,1,1,1,1
+access_orls_paeds_ascitic_tap_log_lines,access.orls.paeds.ascitic.tap.log.lines,model_orls_paeds_ascitic_tap_log_lines,,1,1,1,1
+access_orls_paeds_blood_transfusion_lines,access.orls.paeds.blood.transfusion.lines,model_orls_paeds_blood_transfusion_lines,,1,1,1,1
+access_orls_paeds_blood_transfusion_log_lines,access.orls.paeds.blood.transfusion.log.lines,model_orls_paeds_blood_transfusion_log_lines,,1,1,1,1
+access_orls_paeds_exchange_transfusion_lines,access.orls.paeds.exchange.transfusion.lines,model_orls_paeds_exchange_transfusion_lines,,1,1,1,1
+access_orls_paeds_exchange_transfusion_log_lines,access.orls.paeds.exchange.transfusion.log.lines,model_orls_paeds_exchange_transfusion_log_lines,,1,1,1,1
+access_orls_paeds_intraosseus_cannulation_lines,access.orls.paeds.intraosseus.cannulation.lines,model_orls_paeds_intraosseus_cannulation_lines,,1,1,1,1
+access_orls_paeds_intraosseus_cannulation_log_lines,access.orls.paeds.intraosseus.cannulation.log.lines,model_orls_paeds_intraosseus_cannulation_log_lines,,1,1,1,1
+access_orls_paeds_intravenous_cannulation_lines,access.orls.paeds.intravenous.cannulation.lines,model_orls_paeds_intravenous_cannulation_lines,,1,1,1,1
+access_orls_paeds_intravenous_cannulation_log_lines,access.orls.paeds.intravenous.cannulation.log.lines,model_orls_paeds_intravenous_cannulation_log_lines,,1,1,1,1
+access_orls_paeds_iv_cannulation_lines,access.orls.paeds.iv.cannulation.lines,model_orls_paeds_iv_cannulation_lines,,1,1,1,1
+access_orls_paeds_iv_cannulation_log_lines,access.orls.paeds.iv.cannulation.log.lines,model_orls_paeds_iv_cannulation_log_lines,,1,1,1,1
+access_orls_paeds_lumbar_puncture_lines,access.orls.paeds.lumbar.puncture.lines,model_orls_paeds_lumbar_puncture_lines,,1,1,1,1
+access_orls_paeds_lumbar_puncture_log_lines,access.orls.paeds.lumbar.puncture.log.lines,model_orls_paeds_lumbar_puncture_log_lines,,1,1,1,1
+access_orls_paeds_ng_tube_insertion_lines,access.orls.paeds.ng.tube.insertion.lines,model_orls_paeds_ng_tube_insertion_lines,,1,1,1,1
+access_orls_paeds_ng_tube_insertion_log_lines,access.orls.paeds.ng.tube.insertion.log.lines,model_orls_paeds_ng_tube_insertion_log_lines,,1,1,1,1
+access_orls_paeds_phlebotomy_neonates_lines,access.orls.paeds.phlebotomy.neonates.lines,model_orls_paeds_phlebotomy_neonates_lines,,1,1,1,1
+access_orls_paeds_phlebotomy_neonates_log_lines,access.orls.paeds.phlebotomy.neonates.log.lines,model_orls_paeds_phlebotomy_neonates_log_lines,,1,1,1,1
+access_orls_paeds_phlebotomy_older_children_lines,access.orls.paeds.phlebotomy.older.children.lines,model_orls_paeds_phlebotomy_older_children_lines,,1,1,1,1
+access_orls_paeds_phlebotomy_older_children_log_lines,access.orls.paeds.phlebotomy.older.children.log.lines,model_orls_paeds_phlebotomy_older_children_log_lines,,1,1,1,1
+access_orls_paeds_rotation_procedures,access.orls.paeds.rotation.procedures,model_orls_paeds_rotation_procedures,,1,1,1,1
+access_orls_paeds_resident_log,access.orls.paeds.resident.log,model_orls_paeds_resident_log,,1,1,1,1
+access_orls_paeds_urinary_catherterisation_lines,access.orls.paeds.urinary.catherterisation.lines,model_orls_paeds_urinary_catherterisation_lines,1,1,1,1
+access_orls_paeds_urinary_catherterisation_log_lines,access.orls.paeds.urinary.catherterisation.log.lines,model_orls_paeds_urinary_catherterisation_log_lines,1,1,1,1
+
 
 
