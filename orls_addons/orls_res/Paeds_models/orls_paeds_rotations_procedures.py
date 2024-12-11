@@ -90,6 +90,24 @@ class OrlsPaedsRotationProcedures(models.Model):
         string="Intraosseus Cannulation 1(p)"
     )
 
+    orls_paeds_ng_tube_insertion_main_ids = fields.One2many(
+        'orls.paeds.ng.tube.insertion.log.lines',
+        'orls_paeds_ng_tube_insertion_main_id',
+        string="NG Tube insertion (NBU) 10(p)"
+    )
+
+    orls_paeds_iv_cannulation_main_ids = fields.One2many(
+        'orls.paeds.iv.cannulation.lines',
+        'orls_paeds_iv_cannulation_main_id',
+        string="IV cannulation 10(p)"
+    )
+
+    orls_paeds_lumbar_puncture_main_ids = fields.One2many(
+        'orls.paeds.lumbar.puncture.lines',
+        'orls_paeds_lumbar_puncture_main_id',
+        string="Lumbar puncture 3(p)"
+    )
+
 
 
 

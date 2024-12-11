@@ -48,7 +48,7 @@ class OrlsPaedsResidentLog(models.Model):
     )
 
     orls_paeds_urinary_catheterisation_log_ids = fields.One2many(
-        'orls.paeds.blood.transfusion.log.lines',
+        'orls.paeds.urinary.catherterisation.log.lines',
         'orls_paeds_urinary_catheterisation_log_id',
         string="Urinary Catheterisation 5(a)"
     )
@@ -65,9 +65,23 @@ class OrlsPaedsResidentLog(models.Model):
         string="Intravenous Cannulation 1(p)"
     )
 
+    orls_paeds_ng_tube_insertion_log_ids = fields.One2many(
+        'orls.paeds.ng.tube.insertion.log.lines',
+        'orls_paeds_ng_tube_insertion_log_id',
+        string="NG Tube insertion (NBU) 10(p)"
+    )
 
+    orls_paeds_iv_cannulation_log_ids = fields.One2many(
+        'orls.paeds.iv.cannulation.log.lines',
+        'orls_paeds_iv_cannulation_log_id',
+        string="IV cannulation 10(p)"
+    )
 
-
+    orls_paeds_lumbar_puncture_log_ids = fields.One2many(
+        'orls.paeds.lumbar.puncture.log.lines',
+        'orls_paeds_lumbar_puncture_log_id',
+        string="Lumbar puncture 3(p)"
+    )
 
     r_l_state = fields.Selection(
         selection=[
