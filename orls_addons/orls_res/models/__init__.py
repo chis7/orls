@@ -58,3 +58,9 @@ from . import orls_paeds_rotations_procedures
 from . import orls_paeds_rotations_resident_log
 from . import orls_paeds_urinary_catheterisation_lines
 from . import orls_paeds_urinary_catheterisation_log_lines
+
+from. import orls_obs_ceasarean_lines
+from. import orls_obs_ceasarean_log_lines
+from . import orls_obs_clerk_investigate_manage_eclampsia_patients_lines
+from . import orls_obs_clerk_inv_manage_pre_eclampsia_patients_log_lines
+from . import orls_obs_clerk_inv_manage_pre_eclampsia_patients_lines
