@@ -119,6 +119,39 @@ access_orls_obs_resident_logs,access.orls.obs.resident.log,model_orls_obs_reside
 access_orls_obs_vacuum_lines,access.orls.obs.vacuum.lines,model_orls_obs_vacuum_lines,,1,1,1,1
 access_orls_obs_vacuum_log_lines,access.orls.obs.vacuum.log.lines,model_orls_obs_vacuum_log_lines,,1,1,1,1
 
+access_orls_gyn_diagnostic_curettage_lines,access.orls.gyn.diagnostic.curettage.lines,model_orls_gyn_diagnostic_curettage_lines,,1,1,1,1
+access_orls_gyn_diagnostic_curettage_log_lines,access.orls.gyn.diagnostic.curettage.log.lines,model_orls_gyn_diagnostic_curettage_log_lines,,1,1,1,1
+access_orls_gyn_exploratory_laparotomy_lines,access.orls.gyn.exploratory.laparotomy.lines,model_orls_gyn_exploratory_laparotomy_lines,,1,1,1,1
+access_orls_gyn_exploratory_laparotomy_log_lines,access.orls.gyn.exploratory.laparotomy.log.lines,model_orls_gyn_exploratory_laparotomy_log_lines,,1,1,1,1
+access_orls_gyn_laparatomy_ectopic_preg_lines,access.orls.gyn.laparatomy.ectopic.preg.lines,model_orls_gyn_laparatomy_ectopic_preg_lines,,1,1,1,1
+access_orls_gyn_laparatomy_ectopic_preg_log_lines,access.orls.gyn.laparatomy.ectopic.preg.log.lines,model_orls_gyn_laparatomy_ectopic_preg_log_lines,,1,1,1,1
+access_orls_gyn_laparoscopic_surgery_lines,access.orls.gyn.laparoscopic.surgery.lines,model_orls_gyn_laparoscopic_surgery_lines,,1,1,1,1
+access_orls_gyn_laparoscopic_surgery_log_lines,access.orls.gyn.laparoscopic.surgery.log.lines,model_orls_gyn_laparoscopic_surgery_log_lines,,1,1,1,1
+access_orls_gyn_laparotomy_pelvic_abscess_lines,access.orls.gyn.laparotomy.pelvic.abscess.lines,model_orls_gyn_laparotomy_pelvic_abscess_lines,,1,1,1,1
+access_orls_gyn_laparotomy_pelvic_abscess_log_lines,access.orls.gyn.laparotomy.pelvic.abscess.log.lines,model_orls_gyn_laparotomy_pelvic_abscess_log_lines,,1,1,1,1
+access_orls_gyn_marsupialization_bartholins_lines,access.orls.gyn.marsupialization.bartholins.lines,model_orls_gyn_marsupialization_bartholins_lines,,1,1,1,1
+access_orls_gyn_marsupialization_bartholins_log_lines,access.orls.gyn.marsupialization.bartholins.log.lines,model_orls_gyn_marsupialization_bartholins_log_lines,,1,1,1,1
+access_orls_gyn_myomectomy_lines,access.orls.gyn.myomectomy.lines,model_orls_gyn_myomectomy_lines,,1,1,1,1
+access_orls_gyn_myomectomy_log_lines,access.orls.gyn.myomectomy.log.lines,model_orls_gyn_myomectomy_log_lines,,1,1,1,1
+access_orls_gyn_ovarian_cystectomy_lines,access.orls.gyn.ovarian.cystectomy.lines,model_orls_gyn_ovarian_cystectomy_lines,,1,1,1,1
+access_orls_gyn_ovarian_cystectomy_log_lines,access.orls.gyn.ovarian.cystectomy.log.lines,model_orls_gyn_ovarian_cystectomy_log_lines,,1,1,1,1
+access_orls_gyn_pap_smear_lines,access.orls.gyn.pap.smear.lines,model_orls_gyn_pap_smear_lines,,1,1,1,1
+access_orls_gyn_pap_smear_log_lines,access.orls.gyn.pap.smear.log.lines,model_orls_gyn_pap_smear_log_lines,,1,1,1,1
+access_orls_gyn_rotation_procedures,access.orls.gyn.rotation.procedures,model_orls_gyn_rotation_procedures,,1,1,1,1
+access_orls_gyn_resident_log,access.orls.gyn.resident.log,model_orls_gyn_resident_log,,1,1,1,1
+access_orls_gyn_suction_curettage_lines,access.orls.gyn.suction.curettage.lines,model_orls_gyn_suction_curettage_lines,,1,1,1,1
+access_orls_gyn_total_abdominal_hysterectomy_lines,access.orls.gyn.total.abdominal.hysterectomy.lines,model_orls_gyn_total_abdominal_hysterectomy_lines,,1,1,1,1
+access_orls_gyn_total_abdominal_hysterectomy_log_lines,access.orls.gyn.total.abdominal.hysterectomy.log.lines,model_orls_gyn_total_abdominal_hysterectomy_log_lines,,1,1,1,1
+access_orls_gyn_tubal_ligation_surgery_lines,access.orls.gyn.tubal.ligation.surgery.lines,model_orls_gyn_tubal_ligation_surgery_lines,,1,1,1,1
+access_orls_gyn_tubal_ligation_surgery_log_lines,access.orls.gyn.tubal.ligation.surgery.log.lines,model_orls_gyn_tubal_ligation_surgery_log_lines,,1,1,1,1
+access_orls_gyn_vaginal_hysterectomy_lines,access.orls.gyn.vaginal.hysterectomy.lines,model_orls_gyn_vaginal_hysterectomy_lines,,1,1,1,1
+access_orls_gyn_vaginal_hysterectomy_log_lines,access.orls.gyn.vaginal.hysterectomy.log.lines,model_orls_gyn_vaginal_hysterectomy_log_lines,,1,1,1,1
+access_orls_gyn_vescicle_vag_fistula_repair_lines,access.orls.gyn.vescicle.vag.fistula.repair.lines,model_orls_gyn_vescicle_vag_fistula_repair_lines,,1,1,1,1
+access_orls_gyn_vescicle_vag_fistula_repair_log_lines,access.orls.gyn.vescicle.vag.fistula.repair.log.lines,model_orls_gyn_vescicle_vag_fistula_repair_log_lines,,1,1,1,1
+access_orls_gyn_via_and_vili_lines,access.orls.gyn.via.and.vili.lines,model_orls_gyn_via_and_vili_lines,,1,1,1,1
+access_orls_gyn_via_and_vili_log_lines,access.orls.gyn.via.and.vili.log.lines,model_orls_gyn_via_and_vili_log_lines,,1,1,1,1
+
+
 
 
 

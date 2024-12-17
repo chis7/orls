@@ -108,6 +108,40 @@ from . import orls_obs_vacuum_log_lines
 from . import orls_obs_counselling_on_family_planning_lines
 from . import orls_obs_counselling_on_family_planning_log_lines
 
+from . import orls_gyn_diagnostic_curettage_lines
+from . import orls_gyn_diagnostic_curettage_log_lines
+from . import orls_gyn_exploratory_laparotomy_lines
+from . import orls_gyn_exploratory_laparotomy_log_lines
+from . import orls_gyn_laparatomy_for_ectopic_pregnancy_lines
+from . import orls_gyn_laparatomy_for_ectopic_pregnancy_log_lines
+from . import orls_gyn_laparotomy_for_pelvic_abscess_lines
+from . import orls_gyn_laparotomy_for_pelvic_abscess_log_lines
+from . import orls_gyn_laparoscopic_surgery_lines
+from . import orls_gyn_laparoscopic_surgery_log_lines
+from . import orls_gyn_marsupialization_for_bartholins_abscess_lines
+from . import orls_gyn_marsupialization_for_bartholins_abscess_log_lines
+from . import orls_gyn_myomectomy_lines
+from . import orls_gyn_myomectomy_log_lines
+from . import orls_gyn_ovarian_cystectomy_lines
+from . import orls_gyn_ovarian_cystectomy_log_lines
+from . import orls_gyn_rotations_procedures
+from . import orls_gyn_rotations_resident_log
+from . import orls_gyn_pap_smear_lines
+from . import orls_gyn_pap_smear_log_lines
+from . import orls_gyn_suction_curettage_lines
+from . import orls_gyn_suction_curettage_log_lines
+from . import orls_gyn_total_abdominal_hysterectomy_lines
+from . import orls_gyn_total_abdominal_hysterectomy_log_lines
+from . import orls_gyn_tubal_ligation_surgery_lines
+from . import orls_gyn_tubal_ligation_surgery_log_lines
+from . import orls_gyn_vaginal_hysterectomy_lines
+from . import orls_gyn_vaginal_hysterectomy_log_lines
+from . import orls_gyn_vescicle_vaginal_fistula_repair_lines
+from . import orls_gyn_vescicle_vaginal_fistula_repair_log_lines
+from . import orls_gyn_via_vili_lines
+from . import orls_gyn_via_vili_log_lines
+
+
 
 
 

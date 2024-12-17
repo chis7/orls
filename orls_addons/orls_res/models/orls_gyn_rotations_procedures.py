@@ -67,6 +67,79 @@ class OrlsGynRotationProcedures(models.Model):
         string="Diagnostic curettage 5(p)"
     )
 
+    orls_gyn_marsupialization_for_bartholins_abscess_main_ids = fields.One2many(
+        'orls.gyn.marsupialization.bartholins.lines',
+        'orls_gyn_marsupialization_for_bartholins_abscess_main_id',
+        string="Marsupialization for Bartholins abscess 2(p)"
+    )
+
+    orls_gyn_laparatomy_ectopic_pregnancy_main_ids = fields.One2many(
+        'orls.gyn.laparatomy.ectopic.preg.lines',
+        'orls_gyn_laparatomy_ectopic_pregnancy_main_id',
+        string="Laparatomy for ectopic pregnancy 3 (p)"
+    )
+
+    orls_gyn_laparotomy_pelvic_abscess_main_ids = fields.One2many(
+        'orls.gyn.laparotomy.pelvic.abscess.lines',
+        'orls_gyn_laparotomy_pelvic_abscess_main_id',
+        string="Laparotomy for pelvic abscess 2(p)"
+    )
+
+    orls_gyn_ovarian_cystectomy_main_ids = fields.One2many(
+        'orls.gyn.ovarian.cystectomy.lines',
+        'orls_gyn_ovarian_cystectomy_main_id',
+        string="Ovarian cystectomy 3(a)"
+    )
+
+    orls_gyn_via_and_vili_main_ids = fields.One2many(
+        'orls.gyn.via.and.vili.lines',
+        'orls_gyn_via_and_vili_main_id',
+        string="VIA (visual inspection with acetic acid) and VILI (visual inspection using Lugol's iodine) 5(p)"
+    )
+
+    orls_gyn_tubal_ligation_surgery_main_ids = fields.One2many(
+        'orls.gyn.tubal.ligation.surgery.lines',
+        'orls_gyn_tubal_ligation_surgery_main_id',
+        string="Tubal ligation surgery 3(a/p)"
+    )
+
+    orls_gyn_laparoscopic_surgery_main_ids = fields.One2many(
+        'orls.gyn.laparoscopic.surgery.lines',
+        'orls_gyn_laparoscopic_surgery_main_id',
+        string="Laparoscopic surgery 2(a)"
+    )
+
+    orls_gyn_exploratory_laparotomy_main_ids = fields.One2many(
+        'orls.gyn.exploratory.laparotomy.lines',
+        'orls_gyn_exploratory_laparotomy_main_id',
+        string="Exploratory laparotomy 5(a)"
+    )
+
+    orls_gyn_total_abdominal_hysterectomy_main_ids = fields.One2many(
+        'orls.gyn.total.abdominal.hysterectomy.lines',
+        'orls_gyn_total_abdominal_hysterectomy_main_id',
+        string="Total abdominal hysterectomy 5(a)"
+    )
+
+    orls_gyn_vaginal_hysterectomy_main_ids = fields.One2many(
+        'orls.gyn.vaginal.hysterectomy.lines',
+        'orls_gyn_vaginal_hysterectomy_main_id',
+        string="Vaginal hysterectomy 3"
+    )
+
+    orls_gyn_myomectomy_main_ids = fields.One2many(
+        'orls.gyn.myomectomy.lines',
+        'orls_gyn_myomectomy_main_id',
+        string="Myomectomy 5(a)"
+    )
+
+    orls_gyn_vescicle_vaginal_fistula_repair_main_ids = fields.One2many(
+        'orls.gyn.vescicle.vag.fistula.repair.lines',
+        'orls_gyn_vescicle_vaginal_fistula_repair_main_id',
+        string="Vescicle Vaginal Fistula repair 1(a)"
+    )
+
+
 
 
 
