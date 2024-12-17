@@ -7,7 +7,7 @@ import random
 
 
 class OrlsObsClerkInvestigateAndManagePatientsWithHIVInPregnancyLines(models.Model):
-    _name = "orls.obs.clerk.investigate.manage.patients.with.hiv.in.pregnancy.lines"
+    _name = "orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.lines"
     _description = "Orls Obs Clerk Investigate And MAnage Patients With HIV In Pregnancy Lines"
 
     orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_main_id = fields.Many2one(

@@ -6,13 +6,13 @@ from odoo.exceptions import UserError, ValidationError
 import random
 
 
-class OrlsObsClerkInvestigateAndManagePatientsWithHIVInPregnancyLogLines(models.Model):
-    _name = "orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.log.lines"
-    _description = "Orls Obs Clerk Investigate And MAnage Patients With HIV In Pregnancy Log Lines"
+class OrlsGynDiagnosticCurettageLogLines(models.Model):
+    _name = "orls.gyn.diagnostic.curettage.log.lines"
+    _description = "Orls Gyn Diagnostic Curettage Log Lines"
 
-    orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_id = fields.Many2one(
-        'orls.obs.resident.log',
-        string="Be able to clerk, investigate and manage patients with HIV in pregnancy 5(p)(EMTCT)"
+    orls_gyn_diagnostic_curettage_log_id = fields.Many2one(
+        'orls.gyn.resident.log',
+        string="Diagnostic curettage 5(p)"
     )
     a_t_number_of_cases = fields.Char(string="# of Cases", store=True)
     a_t_file_no = fields.Char(string="File No.", store=True)

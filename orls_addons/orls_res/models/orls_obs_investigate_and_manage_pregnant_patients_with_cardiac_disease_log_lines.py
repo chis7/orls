@@ -7,7 +7,7 @@ import random
 
 
 class OrlsObsInvestigateAndManagePregnantPatientsWithCardiacDiseaseLogLines(models.Model):
-    _name = "orls.obs.investigate.manage.preg.pat.with.cardiac.disease.log.lines"
+    _name = "orls.obs.inv.manage.preg.pat.with.cardiac.log.lines"
     _description = "Orls Obs Investigate And Manage Pregnant Patients With Cardiac Disease Log Lines"
 
     orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_id = fields.Many2one(

@@ -8,10 +8,10 @@ from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
-class OrlsObsResidentLog(models.Model):
-    _name = "orls.obs.resident.log"
+class OrlsGynResidentLog(models.Model):
+    _name = "orls.gyn.resident.log"
     _inherit = ["mail.thread"]
-    _description = "Orls Obs Resident Log"
+    _description = "Orls Gyn Resident Log"
 
     internship_center_id = fields.Many2one('res.company', string="Internship Center")
     hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.")
@@ -29,140 +29,25 @@ class OrlsObsResidentLog(models.Model):
         string='Rotation'
     )
 
-    orls_obs_normal_delivery_log_ids = fields.One2many(
-        'orls.obs.normal.delivery.log.lines',
-        'orls_obs_normal_delivery_log_id',
-        string="Normal delivery 10(p)"
+    orls_gyn_pap_smear_log_ids = fields.One2many(
+        'orls.gyn.pap.smear.log.lines',
+        'orls_gyn_pap_smear_log_id',
+        string="Pap Smear 5(p)"
     )
 
-    orls_obs_episiotomy_log_ids = fields.One2many(
-        'orls.obs.episotomy.log.lines',
-        'orls_obs_episiotomy_log_id',
-        string="Episiotomy / Repair- 5 (P)"
+    orls_gyn_diagnostic_curettage_log_ids = fields.One2many(
+        'orls.gyn.diagnostic.curettage.log.lines',
+        'orls_gyn_diagnostic_curettage_log_id',
+        string="Diagnostic curettage 5(p)"
     )
 
-    orls_obs_pph_log_ids = fields.One2many(
-        'orls.obs.pph.log.lines',
-        'orls_obs_pph_log_id',
-        string="Management of PPH 3(a) 5(p)"
-    )
-    orls_obs_ceasarean_log_ids = fields.One2many(
-        'orls.obs.ceasarean.log.lines',
-        'orls_obs_ceasarean_log_id',
-        string="Delivery by Caesarean Section10(p)"
+    orls_gyn_suction_curettage_log_ids = fields.One2many(
+        'orls.gyn.suction.curettage.log.lines',
+        'orls_gyn_suction_curettage_log_id',
+        string="Suction Curettage (MVA) AO5 & 15 (p)"
     )
 
-    orls_obs_vacuum_log_ids = fields.One2many(
-        'orls.obs.vacuum.log.lines',
-        'orls_obs_vacuum_log_id',
-        string="Delivery by Vacuum Section10(p)"
-    )
 
-    orls_obs_multiple_delivery_log_ids = fields.One2many(
-        'orls.obs.multiple.delivery.log.lines',
-        'orls_obs_multiple_delivery_log_id',
-        string="Delivery of multiple pregnancies 2(a) or 2(p)"
-    )
-
-    orls_obs_mcdonald_stitch_insertion_log_ids = fields.One2many(
-        'orls.obs.mcdonald.stitch.insertion.log.lines',
-        'orls_obs_mcdonald_stitch_insertion_log_id',
-        string="McDonald Stitch insertion 3(a) and 2(p)*"
-    )
-
-    orls_obs_mcdonald_stitch_removal_log_id = fields.One2many(
-        'orls.obs.mcdonald.stitch.removal.log.lines',
-        'orls_obs_mcdonald_stitch_removal_log_id',
-        string="McDonald Stitch removal 3(a) and 2(p)*"
-    )
-
-    orls_obs_postpartum_iud_insertion_log_ids = fields.One2many(
-        'orls.obs.postpartum.iud.insertion.log.lines',
-        'orls_obs_postpartum_iud_insertion_log_id',
-        string="Postpartum family planning: PP- IUD Insertion"
-    )
-
-    orls_obs_counselling_on_family_planning_log_ids = fields.One2many(
-        'orls.obs.counselling.family.planning.log.lines',
-        'orls_obs_counselling_on_family_planning_log_id',
-        string="Counselling clients on family planning methods 8(p)"
-    )
-    orls_obs_norplant_jadelle_insertion_and_removal_log_ids = fields.One2many(
-        'orls.obs.norplant.jadelle.insertion.and.removal.log.lines',
-        'orls_obs_norplant_jadelle_insertion_and_removal_log_id',
-        string="Norplant/Jadelle insertion and Removal 5(a) and 5(p)"
-    )
-
-    orls_iucd_insertion_removal_log_ids = fields.One2many(
-        'orls.obs.iucd.insertion.removal.log.lines',
-        'orls_iucd_insertion_removal_log_id',
-        string="Norplant/Jadelle insertion and Removal 5(a) and 5(p)"
-    )
-
-    orls_obs_prescribing_ora_or_injectable_fp_log_ids = fields.One2many(
-        'orls.obs.prescribing.ora.or.injectable.fp.log.lines',
-        'orls_obs_prescribing_ora_or_injectable_fp_log_id',
-        string="Prescribing oral or injectable FP 5(P)"
-    )
-
-    orls_obs_clerk_inv_manage_pre_eclampsia_patients_log_ids = fields.One2many(
-        'orls.obs.clerk.inv.manage.pre.eclampsia.patients.log.lines',
-        'orls_obs_clerk_inv_manage_pre_eclampsia_patients_log_id',
-        string="Be able to clerk, investigate and manage patients with pre-eclampsia 3(a) and 5(p)"
-    )
-
-    orls_management_of_malaria_in_pregnancy_log_ids = fields.One2many(
-        'orls.obs.management.of.malaria.in.pregnancy.log.lines',
-        'orls_management_of_malaria_in_pregnancy_log_id',
-        string="management of Malaria in pregnancy 3(P)"
-    )
-
-    orls_obs_clerk_inv_manage_eclampsia_patients_log_ids = fields.One2many(
-        'orls.obs.clerk.inv.manage.eclampsia.patients.log.lines',
-        'orls_obs_clerk_inv_manage_eclampsia_patients_log_id',
-        string="Be able to clerk, investigate and manage patients with eclampsia 2(p)"
-    )
-
-    orls_management_of_anemia_in_pregnancy_log_ids = fields.One2many(
-        'orls.obs.management.of.anemia.in.pregnancy.log.lines',
-        'orls_management_of_anemia_in_pregnancy_log_id',
-        string="management of anemia in pregnancy 5(P)"
-    )
-
-    orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_ids = fields.One2many(
-        'orls.obs.inv.manage.preg.pat.with.cardiac.log.lines',
-        'orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_id',
-        string="Investigate & manage pregnant patients with cardiac disease 2(p)"
-    )
-
-    orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_ids = fields.One2many(
-        'orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.log.lines',
-        'orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_id',
-        string="Be able to clerk, investigate and manage patients with HIV in pregnancy 5(p)(EMTCT)"
-    )
-    orls_manual_removal_of_retained_placenta_log_ids = fields.One2many(
-        'orls.obs.manual.removal.of.retained.placenta.log.lines',
-        'orls_manual_removal_of_retained_placenta_log_id',
-        string="Manual removal of retained placenta 2(a) and 2(p)"
-    )
-
-    orls_obs_repair_of_perineal_tears_log_ids = fields.One2many(
-        'orls.obs.repair.of.perineal.tears.log.lines',
-        'orls_obs_repair_of_perineal_tears_log_id',
-        string="Repair of perineal tears 5(p)"
-    )
-
-    orls_obs_repair_of_cervical_tears_all_degrees_log_ids = fields.One2many(
-        'orls.obs.repair.of.cervical.tears.all.degrees.log.lines',
-        'orls_obs_repair_of_cervical_tears_all_degrees_log_id',
-        string="Repair of cervical tears all degrees 2(a),2(p)"
-    )
-
-    orls_obs_obstetric_ultrasound_log_ids = fields.One2many(
-        'orls.obs.obstetric.ultrasound.log.lines',
-        'orls_obs_obstetric_ultrasound_log_id',
-        string="Obstetric ultrasound 5(p) (Fetal presentation, placenta location, Fetal viability, liquor volume)."
-    )
 
 
 

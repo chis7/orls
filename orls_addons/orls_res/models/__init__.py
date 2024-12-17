@@ -59,8 +59,60 @@ from . import orls_paeds_rotations_resident_log
 from . import orls_paeds_urinary_catheterisation_lines
 from . import orls_paeds_urinary_catheterisation_log_lines
 
-from. import orls_obs_ceasarean_lines
-from. import orls_obs_ceasarean_log_lines
-from . import orls_obs_clerk_investigate_manage_eclampsia_patients_lines
+from . import orls_obs_ceasarean_lines
+from . import orls_obs_ceasarean_log_lines
+from . import orls_obs_clerk_inv_manage_eclampsia_patients_log_lines
 from . import orls_obs_clerk_inv_manage_pre_eclampsia_patients_log_lines
-from . import orls_obs_clerk_inv_manage_pre_eclampsia_patients_lines
+from . import orls_obs_clerk_investigate_and_manage_patients_with_hiv_in_pregnancy_lines
+from . import orls_obs_clerk_investigate_and_manage_patients_with_hiv_in_pregnancy_log_lines
+from . import orls_obs_clerk_investigate_manage_eclampsia_patients_lines
+from . import orls_obs_clerk_investigate_manage_pre_eclampsia_patients_lines
+from . import orls_obs_episotomy_lines
+from . import orls_obs_episiotomy_log_lines
+from . import orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_lines
+from . import orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_lines
+from . import orls_obs_iucd_insertion_removal_lines
+from . import orls_obs_iucd_insertion_removal_log_lines
+from . import orls_obs_managment_of_anemia_in_pregnancy_lines
+from . import orls_obs_managment_of_anemia_in_pregnancy_log_lines
+from . import orls_obs_managment_of_malaria_in_pregnancy_lines
+from . import orls_obs_managment_of_malaria_in_pregnancy_log_lines
+from . import orls_obs_manual_removal_of_retained_placenta_lines
+from . import orls_obs_manual_removal_of_retained_placenta_log_lines
+from . import orls_obs_mcdonald_stitch_removal_lines
+from . import orls_obs_mcdonald_stitch_removal_log_lines
+from . import orls_obs_mcdonald_stitch_insertion_lines
+from . import orls_obs_mcdonald_stitch_insertion_log_lines
+from . import orls_obs_multiple_delivery_lines
+from . import orls_obs_multiple_delivery_log_lines
+from . import orls_obs_normal_delivery_lines
+from . import orls_obs_normal_delivery_log_lines
+from . import orls_obs_norplant_jadelle_insertion_and_removal_lines
+from . import orls_obs_norplant_jadelle_insertion_and_removal_log_lines
+from . import orls_obs_obstetric_ultrasound_lines
+from . import orls_obs_obstetric_ultrasound_log_lines
+from . import orls_obs_post_partum_iud_instertion_lines
+from . import orls_obs_postpartum_iud_insertion_log_lines
+from . import orls_obs_pph_lines
+from . import orls_obs_pph_log_lines
+from . import orls_obs_prescribing_oral_or_injectable_fp_lines
+from . import orls_obs_prescribing_ora_or_injectable_fp_log_lines
+from . import orls_obs_repair_of_perineal_tears_lines
+from . import orls_obs_repair_of_perineal_tears_log_lines
+from . import orls_obs_repair_of_cervical_tears_all_degrees_lines
+from . import orls_obs_repair_of_cervical_tears_all_degrees_log_lines
+from . import orls_obs_rotations_procedures
+from . import orls_obs_rotations_resident_log
+from . import orls_obs_vaccum_lines
+from . import orls_obs_vacuum_log_lines
+from . import orls_obs_counselling_on_family_planning_lines
+from . import orls_obs_counselling_on_family_planning_log_lines
+
+
+
+
+
+
+
+
+
