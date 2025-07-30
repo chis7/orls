@@ -1,0 +1,36 @@
+<odoo>
+    <record id="orls_notebook_page_form" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.notebook.page.form</field>
+        <field name="model">orls.gen.surgery.notebook.page</field>
+        <field name="arch" type="xml">
+            <form>
+
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="notebook_pages_id"/>
+                            <field name="discipline_id"/>
+                        </group>
+                    </group>
+
+                </sheet>
+<!--                <div class="oe_chatter" context="{'validate_analytic': True}">-->
+<!--                    <field name="message_follower_ids"/>-->
+<!--                    <field name="message_ids"/>-->
+<!--                </div>-->
+            </form>
+        </field>
+    </record>
+     <record id="action_orls_notebook_pages" model="ir.actions.act_window">
+        <field name="name">Pages</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">orls.gen.surgery.notebook.page</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create a Page
+            </p>
+        </field>
+    </record>
+</odoo>

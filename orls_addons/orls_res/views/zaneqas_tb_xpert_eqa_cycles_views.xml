@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_form_view_server" model="ir.actions.server">
+        <field name="name">Open Form View</field>
+        <field name="model_id" ref="model_orls_gen_surgery_rotation_procedures_operations"/>
+        <field name="binding_model_id" ref="model_orls_gen_surgery_rotation_procedures_operations"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = {
+            'type': 'ir.actions.act_window',
+            'name': 'Submit EQA Results',
+            'res_model': 'orls.gen.surgery.rotation.procedures.operations',
+            'view_mode': 'form',
+            'view_id': env.ref('orls.orls_gen_surgery_rotation_procedures_operations_wizard_form').id,
+            'res_id': record.id,
+            'target': 'new'
+            }
+        </field>
+    </record>
+
+
+    <record id="orls_gen_surgery_rotation_procedures_operations_kanban" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.rotation.procedures.operations.kanban</field>
+        <field name="model">orls.gen.surgery.rotation.procedures.operations</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="display_name" readonly="1"/>
+                <field name="state" readonly="1"/>
+                <field name="start_date" readonly="1"/>
+                <field name="end_date" readonly="1"/>
+                <field name="user_in_assigned_rotation" column_invisible="True"/>
+                <field name="user_has_created_log" column_invisible="True"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="o_kanban_details">
+                            <div class="o_kanban_record_top">
+                                <div class="o_kanban_record_left">
+                                    <div class="o_kanban_record_title">
+                                        <strong>
+                                            <field name="display_name"/>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="o_kanban_record_right">
+                                <span>Start Date :</span>
+                                <t t-esc="record.start_date.value"/>
+                                <br/>
+                                <span>End Date :</span>
+                                <t t-esc="record.end_date.value"/>
+                            </div>
+                            <div>
+                                <span>Status :</span>
+                                <t t-esc="record.state.value"/>
+                            </div>
+                            <br/>
+                            <div class="o_kanban_record_bottom">
+                                <button name="open_results_submission_wizard"
+                                        confirm="You are about to start entering your results for submission. Are you sure you want to proceed?"
+                                        string="Create Log"
+                                        type="object"
+                                        invisible="user_in_assigned_rotation == False or user_has_created_log"
+                                        class="btn-primary"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!--    <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">-->
+    <!--        <field name="name">Rotation Procedures</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>-->
+    <!--        <field name="view_mode">kanban</field>-->
+    <!--        <field name="domain">[('state', '=', 'approved')]</field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="o_view_nocontent_smiling_face">-->
+    <!--                no rotation available at the moment-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--        <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">-->
+    <!--            <field name="name">Rotation Procedures</field>-->
+    <!--            <field name="type">ir.actions.act_window</field>-->
+    <!--            <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>-->
+    <!--            <field name="view_mode">kanban</field>-->
+    <!--            <field name="domain">[('state', '=', 'approved')]</field>-->
+    <!--            <field name="help" type="html">-->
+    <!--                <p class="o_view_nocontent_smiling_face">-->
+    <!--                    no rotation procedure available at the moment-->
+    <!--                </p>-->
+    <!--            </field>-->
+    <!--        </record>-->
+    <record id="zaneqas_tb_xpert_eqa_expected_results_search" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.rotation.procedures.operations.search</field>
+        <field name="model">orls.gen.surgery.rotation.procedures.operations</field>
+        <field name="arch" type="xml">
+            <search string="TB Xpert EQA Expected Results">
+
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <!-- training plan action-->
+    <record id="action_rotations" model="ir.actions.act_window">
+        <field name="name">Rotation Procedures</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>
+        <field name="domain">[('state', '=', 'approved')]</field>
+        <field name="view_mode">kanban</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                no rotation procedure available at the moment
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
