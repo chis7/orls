@@ -129,15 +129,15 @@ class OrlsObsResidentLog(models.Model):
         string="management of anemia in pregnancy 5(P)"
     )
 
-    orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_ids = fields.One2many(
+    orls_obs_inv_and_manage_preg_pats_with_cardiac_log_ids = fields.One2many(
         'orls.obs.inv.manage.preg.pat.with.cardiac.log.lines',
-        'orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_id',
+        'orls_obs_inv_and_manage_preg_pats_with_cardiac_log_id',
         string="Investigate & manage pregnant patients with cardiac disease 2(p)"
     )
 
-    orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_ids = fields.One2many(
+    orls_obs_clerk_inv_manage_pats_with_hiv_in_preg_log_ids = fields.One2many(
         'orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.log.lines',
-        'orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_id',
+        'orls_obs_clerk_inv_manage_pats_with_hiv_in_preg_log_id',
         string="Be able to clerk, investigate and manage patients with HIV in pregnancy 5(p)(EMTCT)"
     )
     orls_manual_removal_of_retained_placenta_log_ids = fields.One2many(

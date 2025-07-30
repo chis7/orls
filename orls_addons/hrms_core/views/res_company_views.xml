@@ -7,14 +7,13 @@
             <field name="model">res.company</field>
             <field name="inherit_id" ref="base.view_company_form"/>
             <field name="arch" type="xml">
+                <xpath expr="//form" position="attributes">
+                    <attribute name="string">Institution</attribute>
+                </xpath>
                 <!-- Hide VAT field -->
-                <xpath expr="//field[@name='vat']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
+                <xpath expr="//field[@name='vat']" position="replace"/>
                 <!-- Hide Company Registry field -->
-                <xpath expr="//field[@name='company_registry']" position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
+                <xpath expr="//field[@name='company_registry']" position="replace"/>
                 <!-- Hide Currency ID field -->
 <!--                <xpath expr="//field[@name='currency_id']" position="attributes">-->
 <!--                    <attribute name="invisible">1</attribute>-->
@@ -104,5 +103,18 @@
                 </notebook>
             </field>
         </record>
+        <record id="view_res_company_tree_inherit_hrms_core" model="ir.ui.view">
+            <field name="name">res.company.tree.inherit.hrms.core</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="string">Institutions</attribute>
+                </xpath>
+            </field>
+        </record>
+<!--        <record id="action_res_company_form" model="ir.actions.act_window">-->
+<!--            <field name="name">Institutions</field>-->
+<!--        </record>-->
     </data>
 </odoo>

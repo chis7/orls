@@ -10,7 +10,7 @@ class OrlsObsInvestigateAndManagePregnantPatientsWithCardiacDiseaseLogLines(mode
     _name = "orls.obs.inv.manage.preg.pat.with.cardiac.log.lines"
     _description = "Orls Obs Investigate And Manage Pregnant Patients With Cardiac Disease Log Lines"
 
-    orls_obs_investigate_and_manage_pregnant_patients_with_cardiac_disease_log_id = fields.Many2one(
+    orls_obs_inv_and_manage_preg_pats_with_cardiac_log_id = fields.Many2one(
         'orls.obs.resident.log',
         string="Investigate & manage pregnant patients with cardiac disease 2(p)"
     )

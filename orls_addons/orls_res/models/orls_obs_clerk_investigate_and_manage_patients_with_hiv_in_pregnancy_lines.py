@@ -10,7 +10,7 @@ class OrlsObsClerkInvestigateAndManagePatientsWithHIVInPregnancyLines(models.Mod
     _name = "orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.lines"
     _description = "Orls Obs Clerk Investigate And MAnage Patients With HIV In Pregnancy Lines"
 
-    orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_main_id = fields.Many2one(
+    orls_obs_clerk_inv_manage_pats_with_hiv_in_pregnancy_main_id = fields.Many2one(
         'orls.obs.rotation.procedures',
         string="Be able to clerk, investigate and manage patients with HIV in pregnancy 5(p)(EMTCT)"
     )

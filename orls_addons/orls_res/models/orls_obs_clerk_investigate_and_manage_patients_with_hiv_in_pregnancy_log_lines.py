@@ -10,7 +10,7 @@ class OrlsObsClerkInvestigateAndManagePatientsWithHIVInPregnancyLogLines(models.
     _name = "orls.obs.clerk.inv.manage.pats.with.hiv.in.preg.log.lines"
     _description = "Orls Obs Clerk Investigate And MAnage Patients With HIV In Pregnancy Log Lines"
 
-    orls_obs_clerk_investigate_manage_patients_with_hiv_in_pregnancy_log_id = fields.Many2one(
+    orls_obs_clerk_inv_manage_pats_with_hiv_in_preg_log_id = fields.Many2one(
         'orls.obs.resident.log',
         string="Be able to clerk, investigate and manage patients with HIV in pregnancy 5(p)(EMTCT)"
     )

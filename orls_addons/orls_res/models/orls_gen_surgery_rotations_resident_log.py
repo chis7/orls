@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import base64
 import csv
+import json
+from reportlab.lib.pagesizes import letter, A4
+from reportlab.pdfgen import canvas
+import io
 from datetime import date
 from io import StringIO
 
@@ -13,13 +17,13 @@ class OrlsGenSurgeryResidentLog(models.Model):
     _inherit = ["mail.thread"]
     _description = "Orls Surgery Resident Log"
 
-    r_l_internship_center_id = fields.Many2one('res.company',string="Internship Center")
-    r_l_hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.")
-    r_l_hpcz_license_No = fields.Char(string="HPCZ License No.")
-    r_l_supervisor_id = fields.Many2one('res.employee',  string="Supervisor's Name", )
+    r_l_internship_center_id = fields.Many2one('res.company', string="Internship Center")
+    # r_l_hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.")
+    # r_l_hpcz_license_No = fields.Char(string="HPCZ License No.")
+    r_l_supervisor_id = fields.Many2one('res.employee', string="Supervisor's Name", )
     r_l_start_date = fields.Date(string="Start Date", required=True)
     r_l_end_date = fields.Date(string="End Date", required=True)
-    name = fields.Many2one('orls.medical.disciplines', string="Discipline")
+    name = fields.Many2one('orls.gen.surgery.rotation.procedures.operations', string="Rotation")
 
     r_l_supervisor_comment = fields.Text(string="Supervisor Comment", tracking=True)
     r_l_pdf_file = fields.Binary(string="PDF File")
@@ -27,6 +31,32 @@ class OrlsGenSurgeryResidentLog(models.Model):
     r_l_rotation_id = fields.Many2one(
         'orls.gen.surgery.rotation.procedures.operations',
         string='Rotation'
+    )
+
+    orls_surgery_overall_assessment_ids = fields.One2many(
+        'orls.overall.assessment',
+        'orls_surgery_overall_assessment_id',
+        string="Overall Assessment"
+    )
+    orls_overall_assessment_area_knowledge_lines_ids = fields.One2many(
+        'orls.overall.assessment.area.knowledge.lines',
+        'orls_overall_assessment_area_knowledge_lines_id',
+        string="Knowledge"
+    )
+    orls_overall_assessment_area_clinical_skills_lines_ids = fields.One2many(
+        'orls.overall.assessment.area.clinical.skills.lines',
+        'orls_overall_assessment_area_clinical_skills_lines_id',
+        string="Clinical Skills"
+    )
+    orls_overall_assessment_area_professional_conduct_lines_ids = fields.One2many(
+        'orls.overall_assessment.area.professional.conduct.lines',
+        'orls_overall_assessment_area_professional_conduct_lines_id',
+        string="Professional Conduct"
+    )
+    orls_overall_assessment_area_leadership_qualities_lines_ids = fields.One2many(
+        'orls.overall.assessment.area.leadership.qualities.lines',
+        'orls_overall_assessment_area_leadership_qualities_lines_id',
+        string="Leadership Qualities"
     )
 
     orls_surgical_toilet_ids = fields.One2many(
@@ -103,7 +133,6 @@ class OrlsGenSurgeryResidentLog(models.Model):
     )
     sample_id = fields.Char(string="Test Sample ID", store=True)
     date_tested = fields.Date(string="Date Tested", store=True)
-
 
     # company_count = fields.Integer(string='Company Count', compute='_compute_company_count', store=True)
 
@@ -332,6 +361,471 @@ class OrlsGenSurgeryResidentLog(models.Model):
     #     for record in self:
     #         record.company_count = len(record.company_ids)
 
+    def action_download_csv(self):
+        output = StringIO()
+        writer = csv.writer(output, quoting=csv.QUOTE_MINIMAL)
+
+        # Write the header
+        writer.writerow([
+            'Resident', 'Rotation', 'Start Date', 'End Date', 'Supervisor Comment',
+            'Knowledge Name', 'Knowledge Grade', 'Knowledge Remarks',
+            'Clinical Skills Name', 'Clinical Skills Grade', 'Clinical Skills Remarks',
+            'Professional Conduct Name', 'Professional Conduct Grade', 'Professional Conduct Remarks',
+            'Leadership Qualities Name', 'Leadership Qualities Grade', 'Leadership Qualities Remarks',
+            'Surgical Toilet Resident Involvement', 'Surgical Toilet Number of Procedures', 'Surgical Toilet File No',
+            'Surgical Toilet Date',
+            'Suturing Wound Resident Involvement', 'Suturing Wound Number of Procedures', 'Suturing Wound File No',
+            'Suturing Wound Date',
+            'Clinical Audit Meeting Topic', 'Teaching Rounds Attended Ward Round'
+        ])
+
+        # Write the data
+        records = self.search([])  # Fetch all records
+        for record in records:
+            rotation_name = 'General Surgery Rotation Procedures' if record.name.name == '1' else record.name.name
+            rotation_data = [
+                record.create_uid.name, rotation_name,
+                record.r_l_start_date.strftime('%Y-%m-%d') if record.r_l_start_date else None,
+                record.r_l_end_date.strftime('%Y-%m-%d') if record.r_l_end_date else None,
+                record.r_l_supervisor_comment
+            ]
+            resident_written = False
+            for knowledge_line in record.orls_overall_assessment_area_knowledge_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    knowledge_line.name, knowledge_line.grade, knowledge_line.remarks,
+                    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
+                ])
+                resident_written = True
+            for clinical_skills_line in record.orls_overall_assessment_area_clinical_skills_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    clinical_skills_line.name, clinical_skills_line.grade, clinical_skills_line.remarks,
+                    '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''
+                ])
+                resident_written = True
+            for professional_conduct_line in record.orls_overall_assessment_area_professional_conduct_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    professional_conduct_line.name, professional_conduct_line.grade, professional_conduct_line.remarks,
+                    '', '', '', '', '', '', '', '', '', '', '', ''
+                ])
+                resident_written = True
+            for leadership_qualities_line in record.orls_overall_assessment_area_leadership_qualities_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    leadership_qualities_line.name, leadership_qualities_line.grade, leadership_qualities_line.remarks,
+                    '', '', '', '', '', '', '', '', '', ''
+                ])
+                resident_written = True
+            for surgical_toilet_line in record.orls_surgical_toilet_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    surgical_toilet_line.s_t_resident_involvement, surgical_toilet_line.s_t_number_of_cases,
+                    surgical_toilet_line.s_t_file_no,
+                    surgical_toilet_line.s_t_date.strftime('%Y-%m-%d') if surgical_toilet_line.s_t_date else None,
+                    '', '', '', '', '', '', '', '', ''
+                ])
+                resident_written = True
+            for suturing_wound_line in record.orls_suturing_wound_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    suturing_wound_line.s_w_resident_involvement, suturing_wound_line.s_w_number_of_cases,
+                    suturing_wound_line.s_w_file_no,
+                    suturing_wound_line.s_w_date.strftime('%Y-%m-%d') if suturing_wound_line.s_w_date else None,
+                    '', '', '', '', ''
+                ])
+                resident_written = True
+            for clinical_audit_meeting_line in record.orls_operation_clinical_or_audit_meetings_presented_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    clinical_audit_meeting_line.topic, '', ''
+                ])
+                resident_written = True
+            for teaching_rounds_attended_line in record.orls_operation_teaching_rounds_attended_lines_ids:
+                writer.writerow((rotation_data if not resident_written else [''] * 5) + [
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    '', '', '',
+                    teaching_rounds_attended_line.ward_round
+                ])
+                resident_written = True
+
+        output.seek(0)
+        attachment = self.env['ir.attachment'].create({
+            'name': 'resident_log.csv',
+            'type': 'binary',
+            'datas': base64.b64encode(output.getvalue().encode('utf-8')),
+            'store_fname': 'resident_log.csv',
+            'mimetype': 'text/csv'
+        })
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/web/content/%s?download=true' % attachment.id,
+            'target': 'self',
+        }
+
+    import json
+    import base64
+    from datetime import date
+
+    import json
+    import base64
+    from datetime import date
+
+    def action_download_all_json(self):
+        data = []
+        records = self.search([])  # Fetch all records
+        for record in records:
+            rotation_name = 'General Surgery Rotation Procedures' if record.name.name == '1' else record.name.name
+            record_data = {
+                'Resident': record.create_uid.name,
+                'Rotation': rotation_name,
+                'Start Date': record.r_l_start_date.strftime('%Y-%m-%d') if record.r_l_start_date else None,
+                'End Date': record.r_l_end_date.strftime('%Y-%m-%d') if record.r_l_end_date else None,
+                'Supervisor Comment': record.r_l_supervisor_comment,
+                'Knowledge': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_knowledge_lines_ids
+                ],
+                'Clinical Skills': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_clinical_skills_lines_ids
+                ],
+                'Professional Conduct': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_professional_conduct_lines_ids
+                ],
+                'Leadership Qualities': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_leadership_qualities_lines_ids
+                ],
+                'Surgical Toilet': [
+                    {
+                        'Resident Involvement': line.s_t_resident_involvement,
+                        'Procedure': line.s_t_number_of_cases,
+                        'File No': line.s_t_file_no,
+                        'Date': line.s_t_date.strftime('%Y-%m-%d') if line.s_t_date else None,
+                    } for line in record.orls_surgical_toilet_ids
+                ],
+                'Suturing Wound': [
+                    {
+                        'Resident Involvement': line.s_w_resident_involvement,
+                        'Procedure': line.s_w_number_of_cases,
+                        'File No': line.s_w_file_no,
+                        'Date': line.s_w_date.strftime('%Y-%m-%d') if line.s_w_date else None,
+                    } for line in record.orls_suturing_wound_ids
+                ],
+                'Clinical Audit Meeting': [
+                    {
+                        'Topic': line.topic
+                    } for line in record.orls_operation_clinical_or_audit_meetings_presented_lines_ids
+                ],
+                'Teaching Rounds Attended': [
+                    {
+                        'Ward Round': line.ward_round
+                    } for line in record.orls_operation_teaching_rounds_attended_lines_ids
+                ]
+            }
+            data.append(record_data)
+
+        json_data = json.dumps(data, indent=4)
+        attachment = self.env['ir.attachment'].create({
+            'name': 'general_surgery_residency_log.json',
+            'type': 'binary',
+            'datas': base64.b64encode(json_data.encode('utf-8')),
+            'store_fname': 'general_surgery_residency_log.json',
+            'mimetype': 'application/json'
+        })
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/web/content/%s?download=true' % attachment.id,
+            'target': 'self',
+        }
+
+    def action_download_json(self):
+        data = []
+        for record in self:
+            rotation_name = 'General Surgery Rotation Procedures' if record.name.name == '1' else record.name.name
+            record_data = {
+                'Rotation Created by': record.create_uid.name,
+                'Rotation Name': rotation_name,
+                'Rotation Start Date': record.r_l_start_date.strftime('%Y-%m-%d') if record.r_l_start_date else None,
+                'Rotation End Date': record.r_l_end_date.strftime('%Y-%m-%d') if record.r_l_end_date else None,
+                'Supervisor Comment': record.r_l_supervisor_comment,
+                'Knowledge Lines': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_knowledge_lines_ids
+                ],
+                'Clinical Skills Lines': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_clinical_skills_lines_ids
+                ],
+                'Professional Conduct Lines': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_professional_conduct_lines_ids
+                ],
+                'Leadership Qualities Lines': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_leadership_qualities_lines_ids
+                ],
+                'Surgical Toilet Lines': [
+                    {
+                        'Resident Involvement': line.s_t_resident_involvement,
+                        'Number of Procedures': line.s_t_number_of_cases,
+                        'File No': line.s_t_file_no,
+                        'Date': line.s_t_date.strftime('%Y-%m-%d') if line.s_t_date else None,
+                    } for line in record.orls_surgical_toilet_ids
+                ],
+                'Suturing Wound Lines': [
+                    {
+                        'Resident Involvement': line.s_w_resident_involvement,
+                        'Number of Procedures': line.s_w_number_of_cases,
+                        'File No': line.s_w_file_no,
+                        'Date': line.s_w_date.strftime('%Y-%m-%d') if line.s_w_date else None,
+                    } for line in record.orls_suturing_wound_ids
+                ],
+                'Clinical Audit Meeting Lines': [
+                    {
+                        'Topic': line.topic
+                    } for line in record.orls_operation_clinical_or_audit_meetings_presented_lines_ids
+                ],
+                'Teaching Rounds Attended Lines': [
+                    {
+                        'Ward Round': line.ward_round
+                    } for line in record.orls_operation_teaching_rounds_attended_lines_ids
+                ]
+            }
+            data.append(record_data)
+
+        json_data = json.dumps(data, indent=4)
+        attachment = self.env['ir.attachment'].create({
+            'name': 'resident_log.json',
+            'type': 'binary',
+            'datas': base64.b64encode(json_data.encode('utf-8')),
+            'store_fname': 'resident_log.json',
+            'mimetype': 'application/json'
+        })
+
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/web/content/%s?download=true' % attachment.id,
+            'target': 'self',
+        }
+
+    @staticmethod
+    def create_pdf_report(resident_data, filename):
+        c = canvas.Canvas(filename, pagesize=A4)
+        width, height = A4
+
+        c.setFont("Helvetica", 12)
+        c.drawString(30, height - 40, f"Resident: {resident_data['Resident']}")
+        c.drawString(30, height - 60, f"Rotation: {resident_data['Rotation']}")
+        c.drawString(30, height - 80, f"Start Date: {resident_data['Start Date']}")
+        c.drawString(30, height - 100, f"End Date: {resident_data['End Date']}")
+        c.drawString(30, height - 120, f"Supervisor Comment: {resident_data['Supervisor Comment']}")
+
+        y = height - 160
+        c.drawString(30, y, "Knowledge Lines:")
+        y -= 20
+        for line in resident_data['Knowledge']:
+            c.drawString(50, y, f"Name: {line['Name']}, Grade: {line['Grade']}, Remarks: {line['Remarks']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Clinical Skills Lines:")
+        y -= 20
+        for line in resident_data['Clinical Skills']:
+            c.drawString(50, y, f"Name: {line['Name']}, Grade: {line['Grade']}, Remarks: {line['Remarks']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Professional Conduct Lines:")
+        y -= 20
+        for line in resident_data['Professional Conduct']:
+            c.drawString(50, y, f"Name: {line['Name']}, Grade: {line['Grade']}, Remarks: {line['Remarks']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Leadership Qualities Lines:")
+        y -= 20
+        for line in resident_data['Leadership Qualities']:
+            c.drawString(50, y, f"Name: {line['Name']}, Grade: {line['Grade']}, Remarks: {line['Remarks']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Surgical Toilet Lines:")
+        y -= 20
+        for line in resident_data['Surgical Toilet']:
+            c.drawString(50, y,
+                         f"Resident Involvement: {line['Resident Involvement']}, Procedure: {line['Procedure']}, File No: {line['File No']}, Date: {line['Date']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Suturing Wound Lines:")
+        y -= 20
+        for line in resident_data['Suturing Wound']:
+            c.drawString(50, y,
+                         f"Resident Involvement: {line['Resident Involvement']}, Procedure: {line['Procedure']}, File No: {line['File No']}, Date: {line['Date']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Clinical Audit Meeting Lines:")
+        y -= 20
+        for line in resident_data['Clinical Audit Meeting']:
+            c.drawString(50, y, f"Topic: {line['Topic']}")
+            y -= 20
+
+        y -= 20
+        c.drawString(30, y, "Teaching Rounds Attended Lines:")
+        y -= 20
+        for line in resident_data['Teaching Rounds Attended']:
+            c.drawString(50, y, f"Ward Round: {line['Ward Round']}")
+            y -= 20
+
+        c.save()
+
+    def generate_reports_from_tables(self):
+        records = self.env['orls.gen.surgery.resident.log'].search([])  # Fetch all records
+        for record in records:
+            resident_data = {
+                'Resident': record.create_uid.name,
+                'Rotation': record.name.name,
+                'Start Date': record.r_l_start_date.strftime('%Y-%m-%d') if record.r_l_start_date else None,
+                'End Date': record.r_l_end_date.strftime('%Y-%m-%d') if record.r_l_end_date else None,
+                'Supervisor Comment': record.r_l_supervisor_comment,
+                'Knowledge': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_knowledge_lines_ids
+                ],
+                'Clinical Skills': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_clinical_skills_lines_ids
+                ],
+                'Professional Conduct': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_professional_conduct_lines_ids
+                ],
+                'Leadership Qualities': [
+                    {
+                        'Name': line.name,
+                        'Grade': line.grade,
+                        'Remarks': line.remarks
+                    } for line in record.orls_overall_assessment_area_leadership_qualities_lines_ids
+                ],
+                'Surgical Toilet': [
+                    {
+                        'Resident Involvement': line.s_t_resident_involvement,
+                        'Procedure': line.s_t_number_of_cases,
+                        'File No': line.s_t_file_no,
+                        'Date': line.s_t_date.strftime('%Y-%m-%d') if line.s_t_date else None,
+                    } for line in record.orls_surgical_toilet_ids
+                ],
+                'Suturing Wound': [
+                    {
+                        'Resident Involvement': line.s_w_resident_involvement,
+                        'Procedure': line.s_w_number_of_cases,
+                        'File No': line.s_w_file_no,
+                        'Date': line.s_w_date.strftime('%Y-%m-%d') if line.s_w_date else None,
+                    } for line in record.orls_suturing_wound_ids
+                ],
+                'Clinical Audit Meeting': [
+                    {
+                        'Topic': line.topic
+                    } for line in record.orls_operation_clinical_or_audit_meetings_presented_lines_ids
+                ],
+                'Teaching Rounds Attended': [
+                    {
+                        'Ward Round': line.ward_round
+                    } for line in record.orls_operation_teaching_rounds_attended_lines_ids
+                ]
+            }
+            resident_name = resident_data['Resident'].replace(' ', '_')
+            filename = f"resident_report_{resident_name}.pdf"
+            self.create_pdf_report(resident_data, filename)
+
+    def open_assessment_wizard(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Supervisor Assessment - General Surgery Rotations Procedures',
+            'res_model': 'orls.gen.surgery.resident.log',
+            'view_mode': 'form',
+            'view_id': self.env.ref(
+                'orls_res.orls_gen_surgery_rotation_procedures_operations_assessment_wizard_form').id,
+            'res_id': self.id,
+            'target': 'new'
+        }
+
+    def open_overall_assessment_wizard(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Overall Assessment - General Surgery Rotations Procedures',
+            'res_model': 'orls.overall.assessment',
+            'view_mode': 'form',
+            'view_id': self.env.ref(
+                'orls_res.orls_overall_assessment_wizard_form').id,
+            'res_id': self.id,
+            'target': 'new'
+        }
+
     def _compute_has_logged_in_user_company_submitted_record(self):
         for record in self:
             user_company = self.env.user.company_id
@@ -401,12 +895,110 @@ class OrlsGenSurgeryResidentLog(models.Model):
     @api.depends('state')
     def _compute_current_state(self):
         for record in self:
-            record.current_state = record.state
+            record.current_state = record.r_l_state
 
     @api.depends('create_uid')
     def _compute_is_supervisor(self):
         for record in self:
-            record.is_supervisor = self.env.user == record.create_uid.parent_id and record.state == 'supervisor'
+            record.is_supervisor = self.env.user.employee_id.id == record.create_uid.employee_id.parent_id.id and record.r_l_state == 'supervisor'
+            # record.is_supervisor = self.env.user == record.create_uid.parent_id and record.r_l_state == 'supervisor'
+
+    def action_supervisor_submit_assessment(self):
+        # Ensure the referenced record exists
+        my_rotation = self.env['orls.gen.surgery.resident.log'].browse(self.id)
+        if not my_rotation.exists():
+            raise UserError("Referenced record does not exist.")
+
+        # form_data = {
+        #     'name': self.name,
+        #     'r_l_internship_center_id': self.internship_center_id.id,
+        #     # 'r_l_hpcz_Reg_No': self.hpcz_Reg_No,
+        #     # 'r_l_hpcz_license_No': self.hpcz_license_No,
+        #     'r_l_start_date': self.start_date,
+        #     'r_l_end_date': self.end_date,
+        #     'r_l_state': 'draft',
+        #     'r_l_pdf_file': self.pdf_file,
+        #     'r_l_pdf_filename': self.pdf_filename,
+        # }
+        #
+        # new_record = self.env['orls.gen.surgery.resident.log'].write(form_data)
+        # new_record_id = new_record.id
+        #
+        # form_data2 = [{
+        #     'orls_surgical_toilet_id': new_record_id,
+        #     's_t_resident_involvement': line.resident_involvement,
+        #     's_t_number_of_cases': line.number_of_cases,
+        #     's_t_date': line.date,
+        #     's_t_file_no': line.file_no,
+        # } for line in self.orls_surgical_toilet_ids]
+        # self.env['orls.gen.surgical.toilet.log.lines'].create(form_data2)
+        #
+        # form_data3 = [{
+        #     'orls_suturing_wound_id': new_record_id,
+        #     's_w_resident_involvement': line.resident_involvement,
+        #     's_w_number_of_cases': line.number_of_cases,
+        #     's_w_date': line.date,
+        #     's_w_file_no': line.file_no,
+        # } for line in self.orls_suturing_wound_ids]
+        # self.env['orls.suturing.wound.log.lines'].create(form_data3)
+        #
+        # form_data4 = [{
+        #     'orls_incision_drainage_abscess_id': new_record_id,
+        #     'a_d_number_of_cases': line.number_of_cases,
+        #     'a_d_date': line.date,
+        #     'a_d_file_no': line.file_no,
+        #     'a_d_resident_involvement': line.resident_involvement,
+        # } for line in self.orls_incision_drainage_abscess_ids]
+        # self.env['orls.incision.drainage.abscess.log.lines'].create(form_data4)
+        #
+        # form_data5 = [{
+        #     'orls_insertion_chest_tubes_id': new_record_id,
+        #     'c_t_resident_involvement': line.resident_involvement,
+        #     'c_t_number_of_cases': line.number_of_cases,
+        #     'c_t_date': line.date,
+        #     'c_t_file_no': line.file_no,
+        # } for line in self.orls_insertion_chest_tubes_ids]
+        # self.env['orls.insertion.chest.tubes.log.lines'].create(form_data5)
+        #
+        # form_data6 = [{
+        #     'orls_removal_of_stitches_id': new_record_id,
+        #     'r_s_resident_involvement': line.resident_involvement,
+        #     'r_s_number_of_cases': line.number_of_cases,
+        #     'r_s_date': line.date,
+        #     'r_s_file_no': line.file_no,
+        # } for line in self.orls_removal_of_stitches_ids]
+        # self.env['orls.removal.of.stitches.log.lines'].create(form_data6)
+        #
+        # form_data7 = [{
+        #     'orls_operation_monthly_review_id': new_record_id,
+        #     'm_p_month': line.month,
+        #     'm_p_resident_comment': line.resident_comment,
+        #     'm_p_resident_comment_date': line.resident_comment_date,
+        #     'm_p_supervisor_comment': line.supervisor_comment,
+        #     'm_p_supervisor_comment_date': line.supervisor_comment_date,
+        #     'm_p_resident_coordinator_comment': line.resident_coordinator_comment,
+        #     'm_p_resident_coordinator_comment_date': line.resident_coordinator_comment_date,
+        # } for line in self.orls_operation_monthly_review_lines_ids]
+        # self.env['orls.gen.surgery.monthly.perf.log.lines'].create(form_data7)
+        #
+        # form_data8 = [{
+        #     'orls_operation_clinical_presentation_id': new_record_id,
+        #     'c_a_date': line.date,
+        #     'c_a_topic': line.topic,
+        #     'c_a_venue': line.venue,
+        #     'c_a_consultant_id': line.consultant_id.id,
+        # } for line in self.orls_operation_clinical_or_audit_meetings_presented_lines_ids]
+        # self.env['orls.gen.surgery.rotation.cl.pres.log.lines'].create(form_data8)
+        #
+        # form_data9 = [{
+        #     'orls_operation_clinical_teaching_rounds_id': new_record_id,
+        #     't_r_date': line.date,
+        #     't_r_ward_round': line.ward_round,
+        #     't_r_venue': line.venue,
+        #     't_r_consultant_id': line.consultant_id.id,
+        # } for line in self.orls_operation_teaching_rounds_attended_lines_ids]
+        # self.env['orls.gen.surgery.teaching.rounds.attended.log.lines'].create(form_data9)
+        pass
 
     @api.depends('create_uid')
     def _compute_is_labIncharge(self):
@@ -414,35 +1006,35 @@ class OrlsGenSurgeryResidentLog(models.Model):
             record.is_LabIncharge = self.env.user == record.create_uid.parent_id.parent_id and record.state == 'lab_incharge'
 
     def action_save_eqa_result_as_draft(self):
-        self.write({'state': 'draft'})
+        self.write({'r_l_state': 'draft'})
 
     def action_submit_eqa_result_to_supervisor(self):
-        self.write({'state': 'supervisor'})
+        self.write({'r_l_state': 'supervisor'})
 
     def action_supervisor_approve_eqa_result(self):
-        self.write({'state': 'lab_incharge'})
+        self.write({'r_l_state': 'lab_incharge'})
 
     def action_supervisor_send_back_eqa_result(self):
-        self.write({'state': 'draft'})
+        self.write({'r_l_state': 'draft'})
 
     def action_LabIncharge_send_back_eqa_result(self):
-        self.write({'state': 'lab_incharge'})
+        self.write({'r_l_state': 'lab_incharge'})
 
     def action_LabIncharge_approve_eqa_result(self):
-        self.write({'state': 'approved'})
+        self.write({'r_l_state': 'approved'})
 
     def action_open_eqa_result(self):
-        self.write({'state': 'open'})
+        self.write({'r_l_state': 'open'})
         self.action_send_email_to_companies()
 
     def action_extend_eqa_result(self):
-        self.write({'state': 'extended'})
+        self.write({'r_l_state': 'extended'})
 
     def action_close_eqa_result(self):
-        self.write({'state': 'closed'})
+        self.write({'r_l_state': 'closed'})
 
     def action_publish_results(self):
-        self.write({'state': 'resultsPublished'})
+        self.write({'r_l_state': 'resultsPublished'})
 
     def action_send_email_to_companies(self):
         for company in self.company_ids:

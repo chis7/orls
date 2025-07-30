@@ -10,6 +10,8 @@ class OrlsAssessmentAreaKnowledge(models.Model):
     _name = "orls.overall.assessment.area.knowledge.lines"
     _inherit = ["mail.thread"]
     _description = "Orls Assessment Area Knowledge"
+    # name = fields.Selection(selection='_get_available_names', string="Competence", required=True)
+
 
     name = fields.Selection(selection=[
         ("basicScience", "Basic Sciences"),
@@ -17,16 +19,38 @@ class OrlsAssessmentAreaKnowledge(models.Model):
         ("participationInCPD", "Participation in CPD")
     ], string="Competence")
     grade = fields.Selection(selection=[
-        ("0", "0"),
-        ("1", "1"),
-        ("2", "2"),
-        ("3", "3")
+        ("0", "0 - Unable to meet the criteria completely"),
+        ("1", "1 - resident requires considerable assistance to meet the stated criteria"),
+        ("2", "2 - resident requires some assistance to meet the stated criteria"),
+        ("3", "3 - Resident meets most of the criteria without assistance")
     ], string="Grade", required=True)
     remarks = fields.Text(string="Remarks", tracking=True)
-    # orls_overall_grading_assessment_area_knowledge_lines_id = fields.Many2one(
-    #     'orls.overall.assessment',
-    #     string="Knowledge"
-    # )
+    orls_overall_assessment_area_knowledge_lines_id = fields.Many2one(
+        'orls.gen.surgery.resident.log',
+        string="Knowledge"
+    )
+
+    # @api.model
+    # def _get_available_names(self):
+    #     all_names = [
+    #         ("basicScience", "Basic Sciences"),
+    #         ("theoretical", "Theoretical Knowledge in the Discipline"),
+    #         ("participationInCPD", "Participation in CPD")
+    #     ]
+    #     selected_names = self.search([]).mapped('name')
+    #     available_names = [name for name in all_names if name[0] not in selected_names]
+    #     return available_names
+    #
+    # @api.model
+    # def create(self, vals):
+    #     if self.search([('name', '=', vals.get('name'))]):
+    #         raise ValidationError("The selected competence has already been chosen.")
+    #     return super(OrlsAssessmentAreaKnowledge, self).create(vals)
+
+    def write(self, vals):
+        if 'name' in vals and self.search([('name', '=', vals.get('name'))]):
+            raise ValidationError("The selected competence has already been chosen.")
+        return super(OrlsAssessmentAreaKnowledge, self).write(vals)
 
     def action_save_eqa_config_round_as_draft(self):
 

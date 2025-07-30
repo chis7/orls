@@ -22,20 +22,24 @@
 from odoo import models, fields, api
 
 
-class ScheduledTrainingCourse(models.Model):
-    _name = "hrms.scheduled.training.course"
-    _description = "Scheduled Training Course"
+class License(models.Model):
+    _name = "hrms.license"
+    _inherit = [
+        'mail.thread',
+        'mail.activity.mixin',
+    ]
+    _description = "License"
 
-    name = fields.Char(string='Name')
-    training_course_id = fields.Many2one(comodel_name='hrms.training.course', string='Training Course')
-    start_date = fields.Datetime(string='Start Date')
-    end_date = fields.Datetime(string='End Date')
-    participant_ids = fields.One2many(comodel_name='hr.employee', string='Participants')
-    instructor_ids = fields.One2many(comodel_name='res.partner', string='Instructors')
-    notes = fields.Text(string='Notes')
-    street = fields.Char(string='Street')
-    street2 = fields.Char(string='Street2')
-    district = fields.Char(string='District')
-    province = fields.Char(string='Province')
+    name = fields.Char(string="Name")
+    registration_authority = fields.Many2one(
+        comodel_name="res.partner",
+        string="Registration Authority"
+    )
+
+
+    _sql_constraints = [
+        ('unique_name', 'UNIQUE(name)', 'The name must be unique.'),
+    ]
+
 
 

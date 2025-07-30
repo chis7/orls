@@ -27,7 +27,10 @@ class CompetencyType(models.Model):
     _description = "Competency Type"
 
     name = fields.Char(string="Name")
-    competency_ids = fields.One2many(comodel_name='hrms.competency', string="Competency")
+    competency_ids = fields.One2many(
+        comodel_name='hrms.competency',
+        inverse_name='competency_type_id',
+        string="Competency")
 
     _sql_constraints = [
         ('unique_name',
@@ -43,9 +46,11 @@ class Competency(models.Model):
         required=True, copy=False, readonly=True, index=True,
         default=lambda self: 'New')
     name = fields.Char(string='Name')
-    competency_type_id = fields.Many2one(comodel_name='hrms.competency.type', string='Competency Type')
+    competency_type_id = fields.Many2one(
+        comodel_name='hrms.competency.type',
+        string='Competency Type')
     notes = fields.Text(string='Notes')
-    active = fields.Boolean(string='Active')
+
 
     _sql_constraints = [
         ('unique_name',

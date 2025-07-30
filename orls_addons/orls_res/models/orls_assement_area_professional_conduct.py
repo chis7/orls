@@ -19,17 +19,17 @@ class OrlsAssessmentAreaProfessionalConduct(models.Model):
         ("punctualityAvailabilityAndTimeManagement", "Punctuality, availability and Time management")
     ], string="Competence")
     grade = fields.Selection(selection=[
-        ("0", "0"),
-        ("1", "1"),
-        ("2", "2"),
-        ("3", "3")
+        ("0", "0 - Unable to meet the criteria completely"),
+        ("1", "1 - resident requires considerable assistance to meet the stated criteria"),
+        ("2", "2 - resident requires some assistance to meet the stated criteria"),
+        ("3", "3 - Resident meets most of the criteria without assistance")
     ], string="Grade", required=True)
     remarks = fields.Text(string="Remarks", tracking=True)
 
-    # orls_overall_grading_assessment_area_professional_conduct_lines_id = fields.Many2one(
-    #     'orls.overall.assessment',
-    #     string="Professional Conduct"
-    # )
+    orls_overall_assessment_area_professional_conduct_lines_id = fields.Many2one(
+        'orls.gen.surgery.resident.log',
+        string="Professional Conduct"
+    )
 
     def action_save_eqa_config_round_as_draft(self):
 

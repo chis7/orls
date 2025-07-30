@@ -67,11 +67,11 @@
                             confirm="Are you sure you want to send back?"
                             string="Send Back" class="btn-primary" type="object" context="{'validate_analytic': True}"
                             invisible="state != 'supervisor' "/>
-<!--                    <button name="action_open_eqa_result" data-hotkey="v"-->
-<!--                            confirm="Are you sure you want to open this PT cycle?"-->
-<!--                            string="Open PT Cycle" class="btn-primary" type="object"-->
-<!--                            context="{'validate_analytic': True}"-->
-<!--                            invisible="state != 'supervisor' "/>-->
+                    <!--                    <button name="action_open_eqa_result" data-hotkey="v"-->
+                    <!--                            confirm="Are you sure you want to open this PT cycle?"-->
+                    <!--                            string="Open PT Cycle" class="btn-primary" type="object"-->
+                    <!--                            context="{'validate_analytic': True}"-->
+                    <!--                            invisible="state != 'supervisor' "/>-->
 
                     <field name="state" context="{'validate_analytic': True}" widget="statusbar"
                            statusbar_visible="draft,supervisor,approved,open,extended,closed,resultsPublished"
@@ -83,30 +83,31 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="internship_center_id"/>
+                            <!--                            <field name="hpcz_Reg_No"/>-->
+                            <!--                            <field name="hpcz_license_No"/>-->
+                        </group>
+                        <group>
                             <!--                            <field name="name" domain="[('state', '=', 'approved')]"/>-->
-                            <field name="name"/>
+                            <!--                            <field name="name"/>-->
                             <field name="start_date" widget="daterange" string="Period of Rotation"
                                    options="{'end_date_field': 'end_date'}" readonly="state != 'draft'"/>
                             <field name="end_date" invisible="1"/>
                             <!--                            <field name="due_date"/>-->
                             <!--                            <field name="due_date" readonly="[('context.hide_participants_page', '=', True)]"/>-->
                         </group>
-                        <group>
-                            <field name="internship_center_id"/>
-                            <field name="hpcz_Reg_No"/>
-                            <field name="hpcz_license_No"/>
-                        </group>
+
                     </group>
 
                     <!--                <notebook invisible="[('user_company_in_list', '=', False)]">-->
                     <notebook>
                         <page string="Surgical toilet-10(p)" id="orls_surgical_toilet_ids">
                             <field name="orls_surgical_toilet_ids">
-                                <tree editable="top">
+                                <tree editable="bottom">
                                     <field name="number_of_cases"/>
-                                    <field name="file_no"/>
-                                    <field name="date"/>
-                                    <field name="resident_involvement"/>
+<!--                                    <field name="file_no"/>-->
+<!--                                    <field name="date"/>-->
+<!--                                    <field name="resident_involvement"/>-->
                                     <!--                                    <field name="supervisor_id"/>-->
 
                                 </tree>
@@ -114,11 +115,11 @@
                         </page>
                         <page string="Suturing Wound-10(p)" id="orls_suturing_wound_ids">
                             <field name="orls_suturing_wound_ids">
-                                <tree editable="top">
+                                <tree editable="bottom">
                                     <field name="number_of_cases"/>
-                                    <field name="file_no"/>
-                                    <field name="date"/>
-                                    <field name="resident_involvement"/>
+<!--                                    <field name="file_no"/>-->
+<!--                                    <field name="date"/>-->
+<!--                                    <field name="resident_involvement"/>-->
                                     <!--                                    <field name="supervisor_id"/>-->
 
                                 </tree>
@@ -127,22 +128,22 @@
                         <page string="Incision and drainage of Abscess 1 (O) 2(p)"
                               id="orls_incision_drainage_abscess_ids">
                             <field name="orls_incision_drainage_abscess_ids">
-                                <tree editable="top">
+                                <tree editable="bottom">
                                     <field name="number_of_cases"/>
-                                    <field name="file_no"/>
-                                    <field name="date"/>
-                                    <field name="resident_involvement"/>
+<!--                                    <field name="file_no"/>-->
+<!--                                    <field name="date"/>-->
+<!--                                    <field name="resident_involvement"/>-->
                                     <!--                                    <field name="supervisor_id"/>-->
                                 </tree>
                             </field>
                         </page>
                         <page string="Insertion of chest tubes 3(p)" id="orls_insertion_chest_tubes_ids">
                             <field name="orls_insertion_chest_tubes_ids">
-                                <tree editable="top">
+                                <tree editable="bottom">
                                     <field name="number_of_cases"/>
-                                    <field name="file_no"/>
-                                    <field name="date"/>
-                                    <field name="resident_involvement"/>
+<!--                                    <field name="file_no"/>-->
+<!--                                    <field name="date"/>-->
+<!--                                    <field name="resident_involvement"/>-->
                                     <!--                                    <field name="supervisor_id"/>-->
 
                                 </tree>
@@ -150,11 +151,11 @@
                         </page>
                         <page string="Removal of stitches 10(p)" id="orls_removal_of_stitches_ids">
                             <field name="orls_removal_of_stitches_ids">
-                                <tree editable="top">
+                                <tree editable="bottom">
                                     <field name="number_of_cases"/>
-                                    <field name="file_no"/>
-                                    <field name="date"/>
-                                    <field name="resident_involvement"/>
+<!--                                    <field name="file_no"/>-->
+<!--                                    <field name="date"/>-->
+<!--                                    <field name="resident_involvement"/>-->
                                     <!--                                    <field name="supervisor_id"/>-->
 
                                 </tree>
@@ -177,7 +178,7 @@
                                 class="btn-primary"/>
                     </group>
 
-<!--                    <button name="download_csv_template" type="object" string="Download CSV Template"-->
+                    <!--                    <button name="download_csv_template" type="object" string="Download CSV Template"-->
                     <!--                            class="btn-secondary"/>-->
                     <group>
                         <field name="employee_ids" widget="many2many_tags" string="Assigned Residents"/>
@@ -311,7 +312,7 @@
                 <notebook>
                     <page string="Surgical toilet-10(p)" id="orls_surgical_toilet_ids2">
                         <field name="orls_surgical_toilet_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="number_of_cases"/>
                                 <field name="file_no"/>
                                 <field name="date"/>
@@ -323,7 +324,7 @@
                     </page>
                     <page string="Suturing Wound-10(p)" id="orls_suturing_wound_ids2">
                         <field name="orls_suturing_wound_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="number_of_cases"/>
                                 <field name="file_no"/>
                                 <field name="date"/>
@@ -335,7 +336,7 @@
                     </page>
                     <page string="Incision and drainage of Abscess 1 (O) 2(p)" id="orls_incision_drainage_abscess_ids2">
                         <field name="orls_incision_drainage_abscess_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="number_of_cases"/>
                                 <field name="file_no"/>
                                 <field name="date"/>
@@ -346,7 +347,7 @@
                     </page>
                     <page string="Insertion of chest tubes 3(p)" id="orls_insertion_chest_tubes_ids2">
                         <field name="orls_insertion_chest_tubes_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="number_of_cases"/>
                                 <field name="file_no"/>
                                 <field name="date"/>
@@ -358,7 +359,7 @@
                     </page>
                     <page string="Removal of stitches 10(p)" id="orls_removal_of_stitches_ids2">
                         <field name="orls_removal_of_stitches_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="number_of_cases"/>
                                 <field name="file_no"/>
                                 <field name="date"/>
@@ -373,7 +374,7 @@
                 <notebook>
                     <page string="Monthly Performance Review" id="orls_operation_monthly_review_lines_ids">
                         <field name="orls_operation_monthly_review_lines_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="month"/>
                                 <field name="resident_comment"/>
                                 <field name="supervisor_comment"/>
@@ -384,7 +385,7 @@
                     <page string="Clinical/Audit Meetings Presented"
                           id="orls_operation_clinical_or_audit_meetings_presented_lines_ids">
                         <field name="orls_operation_clinical_or_audit_meetings_presented_lines_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="date"/>
                                 <field name="topic"/>
                                 <field name="venue"/>
@@ -394,7 +395,7 @@
                     </page>
                     <page string="Teaching Rounds Attended" id="orls_operation_teaching_rounds_attended_lines_ids">
                         <field name="orls_operation_teaching_rounds_attended_lines_ids">
-                            <tree editable="top">
+                            <tree editable="bottom">
                                 <field name="date"/>
                                 <field name="ward_round"/>
                                 <field name="venue"/>

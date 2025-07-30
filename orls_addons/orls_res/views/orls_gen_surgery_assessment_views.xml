@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="orls_gen_surgery_resident_log_assessment_tree" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.resident.log.tree</field>
+        <field name="model">orls.gen.surgery.resident.log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="r_l_internship_center_id"/>
+                <field name="r_l_start_date"/>
+                <field name="r_l_end_date"/>
+                <field name="create_uid"/>
+            </tree>
+
+        </field>
+    </record>
+
+
+    <record id="orls_gen_surgery_resident_log_assessment_form" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.resident.log.form</field>
+        <field name="model">orls.gen.surgery.resident.log</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+
+                    <button name="action_supervisor_approve_eqa_result" data-hotkey="v"
+                            confirm="Are you sure you want to make this approval?"
+                            string="Approve" class="btn-primary" type="object" context="{'validate_analytic': True}"
+                            invisible="r_l_state != 'supervisor' "/>
+                    <button name="action_supervisor_send_back_eqa_result" data-hotkey="v"
+                            confirm="Are you sure you want to send back?"
+                            string="Send Back" class="btn-primary" type="object" context="{'validate_analytic': True}"
+                            invisible="r_l_state != 'supervisor' "/>
+
+
+                    <field name="r_l_state" context="{'validate_analytic': True}" widget="statusbar"
+                           statusbar_visible="draft,supervisor,approved"
+                           options="{'clickable':'1'}"/>
+
+                </header>
+
+                <sheet>
+
+                    <notebook>
+                        <page string="Surgical toilet-10(p)" id="orls_surgical_toilet_assessment_ids">
+                            <field name="orls_surgical_toilet_ids">
+                                <tree editable="top">
+                                    <field name="s_t_number_of_cases"/>
+                                    <field name="s_t_file_no"/>
+                                    <field name="s_t_date"/>
+                                    <field name="s_t_resident_involvement"/>
+                                    <field name="s_t_checkbox_field"/>
+                                    <!--                                    <field name="supervisor_id"/>-->
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Suturing Wound-10(p)" id="orls_suturing_wound_assessment_ids">
+                            <field name="orls_suturing_wound_ids">
+                                <tree editable="top">
+                                    <field name="s_w_number_of_cases"/>
+                                    <field name="s_w_file_no"/>
+                                    <field name="s_w_date"/>
+                                    <field name="s_w_resident_involvement"/>
+                                    <field name="s_w_checkbox_field"/>
+                                    <!--                                    <field name="supervisor_id"/>-->
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Incision and drainage of Abscess 1 (O) 2(p)"
+                              id="orls_incision_drainage_abscess_assessment_ids">
+                            <field name="orls_incision_drainage_abscess_ids">
+                                <tree editable="top">
+                                    <field name="a_d_number_of_cases"/>
+                                    <field name="a_d_file_no"/>
+                                    <field name="a_d_date"/>
+                                    <field name="a_d_resident_involvement"/>
+                                    <field name="a_d_checkbox_field"/>
+                                    <!--                                    <field name="supervisor_id"/>-->
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Insertion of chest tubes 3(p)" id="orls_insertion_chest_tubes_assessment_ids">
+                            <field name="orls_insertion_chest_tubes_ids">
+                                <tree editable="top">
+                                    <field name="c_t_number_of_cases"/>
+                                    <field name="c_t_file_no"/>
+                                    <field name="c_t_date"/>
+                                    <field name="c_t_resident_involvement"/>
+                                    <field name="c_t_checkbox_field"/>
+                                    <!--                                    <field name="supervisor_id"/>-->
+
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Removal of stitches 10(p)" id="orls_removal_of_stitches_assessment_ids">
+                            <field name="orls_removal_of_stitches_ids">
+                                <tree editable="top">
+                                    <field name="r_s_number_of_cases"/>
+                                    <field name="r_s_file_no"/>
+                                    <field name="r_s_date"/>
+                                    <field name="r_s_resident_involvement"/>
+                                    <field name="r_s_checkbox_field"/>
+                                    <!--                                    <field name="supervisor_id"/>-->
+
+                                </tree>
+                            </field>
+                        </page>
+
+                    </notebook>
+                    <br/>
+                    <notebook>
+                        <page string="Monthly Performance Review" id="rif_detection_result_assessment">
+                            <field name="orls_operation_monthly_review_lines_ids">
+                                <tree editable="top">
+                                    <field name="m_p_month"/>
+                                    <field name="m_p_resident_comment"/>
+                                    <field name="m_p_supervisor_comment"/>
+                                    <field name="m_p_resident_coordinator_comment"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Clinical/Audit Meetings Presented" id="rif_detection_result_assessment">
+                            <field name="orls_operation_clinical_or_audit_meetings_presented_lines_ids">
+                                <tree editable="top">
+                                    <field name="c_a_date"/>
+                                    <field name="c_a_topic"/>
+                                    <field name="c_a_venue"/>
+                                    <field name="c_a_consultant_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Teaching Rounds Attended" id="tb_detection_result_assessment">
+                            <field name="orls_operation_teaching_rounds_attended_lines_ids">
+                                <tree editable="top">
+                                    <field name="t_r_date"/>
+                                    <field name="t_r_ward_round"/>
+                                    <field name="t_r_venue"/>
+                                    <field name="t_r_consultant_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <div class="oe_chatter" context="{'validate_analytic': True}">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="training_plan_assessment_search" model="ir.ui.view">
+        <field name="name">orls.gen.surgery.resident.log.search</field>
+        <field name="model">orls.gen.surgery.resident.log</field>
+        <field name="arch" type="xml">
+            <search string="Residency log">
+
+                <separator/>
+            </search>
+        </field>
+    </record>
+
+    <!-- training plan action-->
+    <record id="action_gen_surgery_assessment" model="ir.actions.act_window">
+        <field name="name">General Surgery Rotations Assessment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">orls.gen.surgery.resident.log</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No Residency Log found
+            </p>
+        </field>
+    </record>
+
+</odoo>

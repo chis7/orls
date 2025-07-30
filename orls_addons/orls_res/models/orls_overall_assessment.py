@@ -26,27 +26,12 @@ class OrlsOverallAssessment(models.Model):
         tracking=True
     )
     overall_score = fields.Integer(string="Overall Score", tracking=True)
+    orls_surgery_overall_assessment_id = fields.Many2one(
+        'orls.gen.surgery.resident.log',
+        string="Overall Assessment"
+    )
 
-    # orls_overall_grading_assessment_area_knowledge_lines_ids = fields.One2many(
-    #     'orls.overall.assessment.area.knowledge.lines',
-    #     'orls_overall_grading_assessment_area_knowledge_lines_id',
-    #     string="Knowledge"
-    # )
-    # orls_overall_grading_assessment_area_clinical_skills_lines_ids = fields.One2many(
-    #     'orls.overall.assessment.area.clinical.skills.lines',
-    #     'orls_overall_grading_assessment_area_clinical_skills_lines_id',
-    #     string="Clinical Skills"
-    # )
-    # orls_overall_grading_assessment_area_professional_conduct_lines_ids = fields.One2many(
-    #     'orls.overall_assessment.area.professional.conduct.lines',
-    #     'orls_overall_grading_assessment_area_professional_conduct_lines_id',
-    #     string="Professional Conduct"
-    # )
-    # orls_overall_grading_assessment_area_leadership_qualities_lines_ids = fields.One2many(
-    #     'orls.overall.assessment.area.leadership.qualities.lines',
-    #     'orls_overall_grading_assessment_area_leadership_qualities_lines_id',
-    #     string="Leadership Qualities"
-    # )
+
     state = fields.Selection(
         selection=[
             ("draft", "Draft"),
@@ -92,7 +77,8 @@ class OrlsOverallAssessment(models.Model):
                 raise UserError("Invalid CSV format. Each row should have exactly one column.")
             if not row[0].strip():
                 raise UserError("Invalid CSV format. Company name cannot be empty.")
-
+    def action_submit_overall_assessment(self):
+        pass
     def action_test_upload(self):
         if not self.csv_file:
             raise UserError("Please upload a CSV file first.")

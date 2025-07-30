@@ -18,12 +18,13 @@
         </field>
     </record>
 
+
     <record id="orls_gen_surgery_rotation_procedures_operations_kanban" model="ir.ui.view">
         <field name="name">orls.gen.surgery.rotation.procedures.operations.kanban</field>
         <field name="model">orls.gen.surgery.rotation.procedures.operations</field>
         <field name="arch" type="xml">
             <kanban>
-                <field name="name" readonly="1"/>
+                <field name="display_name" readonly="1"/>
                 <field name="state" readonly="1"/>
                 <field name="start_date" readonly="1"/>
                 <field name="end_date" readonly="1"/>
@@ -36,7 +37,7 @@
                                 <div class="o_kanban_record_left">
                                     <div class="o_kanban_record_title">
                                         <strong>
-                                            <field name="name"/>
+                                            <field name="display_name"/>
                                         </strong>
                                     </div>
                                 </div>
@@ -68,18 +69,31 @@
         </field>
     </record>
 
-    <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">
-        <field name="name">Rotation Procedures</field>
-        <field name="type">ir.actions.act_window</field>
-        <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>
-        <field name="view_mode">kanban</field>
-        <field name="domain">[('state', '=', 'approved')]</field>
-        <field name="help" type="html">
-            <p class="o_view_nocontent_smiling_face">
-                no rotation procedure available at the moment
-            </p>
-        </field>
-    </record>
+    <!--    <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">-->
+    <!--        <field name="name">Rotation Procedures</field>-->
+    <!--        <field name="type">ir.actions.act_window</field>-->
+    <!--        <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>-->
+    <!--        <field name="view_mode">kanban</field>-->
+    <!--        <field name="domain">[('state', '=', 'approved')]</field>-->
+    <!--        <field name="help" type="html">-->
+    <!--            <p class="o_view_nocontent_smiling_face">-->
+    <!--                no rotation available at the moment-->
+    <!--            </p>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+    <!--        <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">-->
+    <!--            <field name="name">Rotation Procedures</field>-->
+    <!--            <field name="type">ir.actions.act_window</field>-->
+    <!--            <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>-->
+    <!--            <field name="view_mode">kanban</field>-->
+    <!--            <field name="domain">[('state', '=', 'approved')]</field>-->
+    <!--            <field name="help" type="html">-->
+    <!--                <p class="o_view_nocontent_smiling_face">-->
+    <!--                    no rotation procedure available at the moment-->
+    <!--                </p>-->
+    <!--            </field>-->
+    <!--        </record>-->
     <record id="zaneqas_tb_xpert_eqa_expected_results_search" model="ir.ui.view">
         <field name="name">orls.gen.surgery.rotation.procedures.operations.search</field>
         <field name="model">orls.gen.surgery.rotation.procedures.operations</field>
@@ -92,10 +106,11 @@
     </record>
 
     <!-- training plan action-->
-    <record id="action_zaneqas_tb_xpert_eqa_cycles" model="ir.actions.act_window">
-        <field name="name">Rotations</field>
+    <record id="action_rotations" model="ir.actions.act_window">
+        <field name="name">Rotation Procedures</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">orls.gen.surgery.rotation.procedures.operations</field>
+        <field name="domain">[('state', '=', 'approved')]</field>
         <field name="view_mode">kanban</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

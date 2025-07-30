@@ -22,56 +22,35 @@
 from odoo import models, fields, api
 
 
-class TrainingCategory(models.Model):
-    _name = "hrms.training.category"
-    _description = "Training Category"
+class CompetencyType(models.Model):
+    _name = "hrms.competency.type"
+    _description = "Competency Type"
 
     name = fields.Char(string="Name")
+    competency_ids = fields.One2many(
+        comodel_name='hrms.competency',
+        inverse_name='competency_type_id',
+        string="Competency")
 
     _sql_constraints = [
         ('unique_name',
          'unique(name)', 'Name should be unique!')]
 
 
-class TrainingModule(models.Model):
-    _name = "hrms.training.module"
-    _description = "Training Module"
-
-    name = fields.Char(string="Name")
-    training = fields.Many2one(comodel_name='hrms.training', string="Training")
-
-
-class TrainingCourse(models.Model):
-    _name = "hrms.training.course"
-    _description = "Training Course"
+class Competency(models.Model):
+    _name = "hrms.competency"
+    _description = "Competency"
 
     sequence = fields.Char(
         string='Reference',
         required=True, copy=False, readonly=True, index=True,
         default=lambda self: 'New')
     name = fields.Char(string='Name')
-    topic = fields.Char(string='Topic')
-    training_category_id = fields.Many2one(
-        comodel_name='hrms.training.category',
-        string='Training Category')
-    training_institution_id = fields.Many2one(
-        comodel_name='res.partner',
-        string="Training Institution")
-    status = fields.Selection(
-        selection=[
-            ('open', 'Open'),
-            ('closed', 'Closed'),
-        ],
-        string='Status'
-    )
-    certificate_template = fields.Html(string='Certificate Template')
-    training_module_ids = fields.One2many(comodel_name='hrms.training.module', string='Training Module')
-    competency_ids = fields.One2many(comodel_name='hrms.competency', string='Competencies')
-    funder_ids = fields.One2many(comodel_name='hrms.funder', string='Funders')
-    passing_score = fields.Float(string='Passing Score')
-    cpd_points = fields.Float(string='CPD Points')
+    competency_type_id = fields.Many2one(
+        comodel_name='hrms.competency.type',
+        string='Competency Type')
     notes = fields.Text(string='Notes')
-    active = fields.Boolean(string='Active')
+
 
     _sql_constraints = [
         ('unique_name',

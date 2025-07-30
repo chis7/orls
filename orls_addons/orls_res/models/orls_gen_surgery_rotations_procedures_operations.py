@@ -11,15 +11,25 @@ from odoo.exceptions import UserError
 class OrlsGenSurgeryRotationProceduresOperations(models.Model):
     _name = "orls.gen.surgery.rotation.procedures.operations"
     _inherit = ["mail.thread"]
-    _description = "Orls General Surgery Rotation Procedures and Operations"
+    _description = "General Surgery Rotation Procedures and Operations"
 
     internship_center_id = fields.Many2one('res.company', string="Internship Center", required=True)
-    hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.", required=True)
-    hpcz_license_No = fields.Char(string="HPCZ License No.", required=True)
-    supervisor_id = fields.Many2one('res.employee', string="Supervisor's Name", )
+    # hpcz_Reg_No = fields.Char(string="HPCZ Reg. No.", required=True)
+    # hpcz_license_No = fields.Char(string="HPCZ License No.", required=True)
+    resident_coordinator_id = fields.Many2one('res.employee', string="Resident Coordinator", )
+    # supervisor_id = fields.Many2one('res.employee', string="Supervisor's Name")
     start_date = fields.Date(string="Start Date", required=True)
     end_date = fields.Date(string="End Date", required=True)
-    name = fields.Many2one('orls.medical.disciplines', string="Discipline", required=True)
+    name = fields.Char(string="Rotation", required=True, default="1")
+    display_name = fields.Char(string="Display Name", compute="_compute_display_name")
+
+    @api.depends('name')
+    def _compute_display_name(self):
+        for record in self:
+            if record.name == "1":
+                record.display_name = "General Surgery Rotation Procedures and Operations"
+            else:
+                record.display_name = record.name
     user_in_assigned_rotation = fields.Boolean(
         string="User in Assigned Rotation",
         compute='_compute_user_in_assigned_rotation'
@@ -48,6 +58,8 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
                 'name': discipline.name,
                 'discipline_id': discipline.id
             })]
+
+
 
     orls_surgical_toilet_ids = fields.One2many(
         'orls.gen.surgical.toilet.lines',
@@ -269,10 +281,10 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
             raise UserError("Referenced record does not exist.")
 
         form_data = {
-            'name': self.name.id,
+            'name': self.name,
             'r_l_internship_center_id': self.internship_center_id.id,
-            'r_l_hpcz_Reg_No': self.hpcz_Reg_No,
-            'r_l_hpcz_license_No': self.hpcz_license_No,
+            # 'r_l_hpcz_Reg_No': self.hpcz_Reg_No,
+            # 'r_l_hpcz_license_No': self.hpcz_license_No,
             'r_l_start_date': self.start_date,
             'r_l_end_date': self.end_date,
             'r_l_state': 'draft',
@@ -480,7 +492,7 @@ class OrlsGenSurgeryRotationProceduresOperations(models.Model):
         self.write({'state': 'supervisor'})
 
     def action_supervisor_approve_eqa_result(self):
-        self.write({'state': 'lab_incharge'})
+        self.write({'state': 'approved'})
 
     def action_supervisor_send_back_eqa_result(self):
         self.write({'state': 'draft'})

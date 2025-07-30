@@ -19,28 +19,27 @@
 #
 ###############################################################################
 
-from odoo import models, fields
+from odoo import models, fields, api
 
 
-class CompetencyLine(models.Model):
-    _name = "hrms.competency.line"
-    _description = "Competency Line"
+class License(models.Model):
+    _name = "hrms.license"
+    _inherit = [
+        'mail.thread',
+        'mail.activity.mixin',
+    ]
+    _description = "License"
 
-    employee_id = fields.Many2one(
-        comodel_name='hr.employee',
-        string="Employee",
-        required=True, ondelete='cascade', index=True, copy=False)
-    competency_id = fields.Many2one(
-        comodel_name='hrms.competency',
-        string="Competency")
-    competency_evaluation = fields.Selection(
-        selection=[
-            ('competent', 'Competent'),
-            ('not_competent', 'Not Competent'),
-            ('not_evaluated', 'Not Evaluated'),
-        ],
-        string="Competency Evaluation"
+    name = fields.Char(string="Name")
+    registration_authority = fields.Many2one(
+        comodel_name="res.partner",
+        string="Registration Authority"
     )
+
+
+    _sql_constraints = [
+        ('unique_name', 'UNIQUE(name)', 'The name must be unique.'),
+    ]
 
 
 
